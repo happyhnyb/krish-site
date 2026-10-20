@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>E-commerce Email Automation case study — Avara Labs</title>
+  <meta name="description" content="AI-augmented email automation for a Shopify D2C brand: classification, drafting and confidence-based human escalation, deployed in 2023.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Avara Labs">
+  <meta property="og:title" content="E-commerce Email Automation case study — Avara Labs">
+  <meta property="og:description" content="AI-augmented email automation for a Shopify D2C brand: classification, drafting and confidence-based human escalation, deployed in 2023.">
+  <meta property="og:image" content="assets/og-image.png">
+  <link rel="icon" type="image/png" href="assets/logos/avara-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&amp;display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" class="brand"><img src="assets/logos/avara-logo.png" alt="" width="30" height="30">Avara Labs</a>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html" aria-current="page">Work</a></li>
+        <li><a href="approach.html">How we work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-ink">Send a project brief</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="cs-hero">
+    <div class="wrap">
+      <a class="link back" href="projects.html">All work</a>
+      <span class="caption">Case study: automation systems</span>
+      <h1 class="cs-title">E-commerce Email Automation.</h1>
+      <p class="cs-lede">AI-augmented email automation for a Shopify D2C brand: classification, drafting and confidence-based human escalation, deployed in 2023.</p>
+      <dl class="facts">
+        <div><dt>Client</dt><dd>D2C beauty brand on Shopify</dd></div>
+        <div><dt>Role</dt><dd>Design, build and handoff</dd></div>
+        <div><dt>Year</dt><dd>2023</dd></div>
+        <div><dt>Stack</dt><dd>OpenAI, Shopify, Zapier, Python</dd></div>
+      </dl>
+    </div>
+  </section>
+  <img class="page-photo" src="img/ecommerce-support.jpg" alt="Fulfilment desk for e-commerce customer-support automation">
+
+  <div class="wrap">
+    <figure class="figure" style="margin-top:80px">
+      <figcaption class="figure-cap"><span class="caption">Email automation workflow</span><span class="caption muted">Solid: processing. Dashed: configuration.</span></figcaption>
+      <div class="figure-body">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 308"
+             role="img" aria-labelledby="av-diag-title av-diag-desc">
+          <title id="av-diag-title">Avara Labs email automation workflow</title>
+          <desc id="av-diag-desc">Diagram showing inbound Shopify email flowing through OpenAI classification, OpenAI draft response, a confidence check that routes either to auto-send or Zapier human escalation. A brand prompt config feeds into the classification and generation steps.</desc>
+
+          <defs>
+            <marker id="avar-arh" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,1 L7,4 L0,7 Z" fill="#000d10"/>
+            </marker>
+            <marker id="avar-arh-d" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,1 L7,4 L0,7 Z" fill="#8e8e95"/>
+            </marker>
+          </defs>
+
+          <style>.d-arrow{marker-end:url(#avar-arh)} .d-dashed{marker-end:url(#avar-arh-d)}</style>
+
+          <!-- Brand Prompt Config (top, config input) -->
+          <rect x="300" y="10" width="200" height="52" class="d-key"/>
+          <text x="400" y="31" text-anchor="middle" font-size="9.5" font-weight="700" class="d-t1">Brand Prompt Config</text>
+          <text x="400" y="48" text-anchor="middle" font-size="7.5" class="d-t2">tone, policies, escalation rules</text>
+
+          <!-- Config → Classification (dashed) -->
+          <path d="M400,62 L400,78 L272,78 L272,96" class="d-dashed"/>
+          <!-- Config → Draft (dashed) -->
+          <path d="M400,62 L400,78 L471,78 L471,96" class="d-dashed"/>
+
+          <!-- ── Main pipeline ── -->
+
+          <!-- 1. Inbound Email / Shopify Webhook -->
+          <rect x="8" y="96" width="140" height="68" class="d-box"/>
+          <text x="78" y="117" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">Inbound Email</text>
+          <text x="78" y="134" text-anchor="middle" font-size="8" class="d-t2">Shopify Webhook</text>
+          <text x="78" y="152" text-anchor="middle" font-size="7.5" class="d-t3">+ support inbox</text>
+
+          <!-- Arrow 1 → 2 -->
+          <path d="M148,130 L194,130" class="d-arrow"/>
+
+          <!-- 2. OpenAI Classification -->
+          <rect x="197" y="96" width="150" height="68" class="d-soft"/>
+          <text x="272" y="117" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">OpenAI</text>
+          <text x="272" y="134" text-anchor="middle" font-size="8.5" class="d-t2">Classification</text>
+
+          <!-- Arrow 2 → 3 -->
+          <path d="M347,130 L394,130" class="d-arrow"/>
+
+          <!-- 3. OpenAI Draft Response -->
+          <rect x="397" y="96" width="148" height="68" class="d-soft"/>
+          <text x="471" y="117" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">OpenAI</text>
+          <text x="471" y="134" text-anchor="middle" font-size="8.5" class="d-t2">Draft Response</text>
+
+          <!-- Arrow 3 → 4 -->
+          <path d="M545,130 L591,130" class="d-arrow"/>
+
+          <!-- 4. Confidence Check (key decision, highlighted) -->
+          <rect x="594" y="88" width="160" height="80" class="d-key"/>
+          <text x="674" y="118" text-anchor="middle" font-size="10" font-weight="800" class="d-t1">Confidence</text>
+          <text x="674" y="136" text-anchor="middle" font-size="8.5" class="d-t2">Check</text>
+
+          <!-- Fork path labels -->
+          <text x="606" y="192" font-size="7" class="d-t3">≥ threshold</text>
+          <text x="757" y="122" font-size="7" class="d-t3">&lt; threshold</text>
+
+          <!-- Arrow 4 → Auto-send (high confidence: down then left) -->
+          <path d="M674,168 L674,200 L474,200 L474,219" class="d-arrow"/>
+
+          <!-- Arrow 4 → Zapier (low confidence: right then down) -->
+          <path d="M754,128 L793,128 L793,200 L697,200 L697,219" class="d-arrow"/>
+
+          <!-- 5. Auto-send -->
+          <rect x="395" y="222" width="158" height="58" class="d-soft"/>
+          <text x="474" y="246" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">Auto-send</text>
+          <text x="474" y="263" text-anchor="middle" font-size="8" class="d-t2">Queued Response</text>
+
+          <!-- 6. Zapier Human Escalation -->
+          <rect x="616" y="222" width="162" height="58" class="d-box"/>
+          <text x="697" y="246" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">Zapier</text>
+          <text x="697" y="263" text-anchor="middle" font-size="8" class="d-t2">Human Escalation</text>
+
+          <!-- Legend -->
+          <text x="8" y="300" font-size="7.5" class="d-t3">Dashed arrows = configuration input, Solid arrows = processing flow</text>
+        </svg>
+      </div>
+      <p class="scroll-note">Scroll sideways to see the full diagram.</p>
+    </figure>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">01 Overview</span><h2 class="h-md">Support email for a Shopify beauty brand, assembled from off-the-shelf parts in weeks.</h2></div>
+      <div class="split-body prose">
+        <p>An Avara Labs engagement to build and deploy an AI-augmented email automation workflow for a D2C brand on Shopify. The system classifies inbound customer emails by intent, generates draft responses against the brand&rsquo;s tone and policies, and escalates uncertain or sensitive cases to a human via Zapier.</p>
+        <p>The pragmatic choice on this project was to assemble the system from off-the-shelf components (OpenAI for classification and generation, Shopify webhooks for triggering, Zapier for human escalation) rather than build custom infrastructure. The brand needed something working in weeks, not a platform.</p>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">02 Problem</span><h2 class="h-md">Most support email falls into a few repeat categories, and reply quality drifted.</h2></div>
+      <div class="split-body prose">
+        <p>D2C support teams spend most of their time on the same handful of email categories: order status, returns, product questions, and shipping issues. Response quality drifts across agents and shifts. For a small brand, hiring more support staff is not always economical, but unanswered emails directly hurt repeat purchase rates.</p>
+        <p>The brand needed automation that handled the repetitive majority of emails reliably and routed the genuinely complex cases to a human, without months of platform engineering or a six-figure SaaS contract.</p>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">03 What we built</span><h2 class="h-md">Four stages, with a conservative confidence gate before anything is sent.</h2></div>
+      <div class="split-body">
+        <div class="features cols-1">
+          <div class="feature"><span class="n">01</span><h3>Inbound capture</h3><p>Shopify webhooks and the brand&rsquo;s support inbox feed incoming customer emails into the pipeline.</p></div>
+          <div class="feature"><span class="n">02</span><h3>Intent classification and response generation</h3><p>OpenAI handles both: classifying the email by category such as order status, return request, product question, complaint, or shipping issue, and generating a draft response grounded in the brand&rsquo;s voice and policies.</p></div>
+          <div class="feature"><span class="n">03</span><h3>Confidence-based routing</h3><p>If the model&rsquo;s confidence on either classification or response is below threshold, the email is routed to a human via Zapier instead of being sent directly. This was the most important design decision on the project: failure modes for AI-generated customer responses are serious enough that the threshold has to be conservative.</p></div>
+          <div class="feature"><span class="n">04</span><h3>Brand-voice grounding</h3><p>Per-brand prompt templates encode tone, policies, and escalation rules so the same architecture can be repointed at a new brand by changing configuration, with no code changes.</p></div>
+        </div>
+        <article class="clay solo">
+          <div class="clay-body">
+            <span class="caption">Key design decision</span>
+            <h3>When unsure, a person answers.</h3>
+            <p>The conservative confidence threshold was the core product decision, made at the start. An AI-generated reply that upsets a customer costs more than a missed automation. Routing to a human on uncertainty is the right default for D2C support at this scale.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">04 Tech stack</span><h2 class="h-md">OpenAI, Shopify webhooks, Zapier and a small Python service.</h2></div>
+      <dl class="split-body stack">
+        <div><dt>Inbound</dt><dd><span>Shopify Webhooks</span><span>Brand Support Inbox</span></dd></div>
+        <div><dt>Intelligence</dt><dd><span>OpenAI GPT-3.5 / 4</span></dd></div>
+        <div><dt>Orchestration</dt><dd><span>Zapier</span></dd></div>
+        <div><dt>Backend</dt><dd><span>Python</span><span>FastAPI</span></dd></div>
+      </dl>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">05 Outcomes</span><h2 class="h-md">Deployed in 2023; we have not operated it since handoff.</h2></div>
+      <div class="split-body prose">
+        <p>Deployed in 2023 to a D2C beauty brand on Shopify. The system handled high-volume repetitive categories (order status, return requests, basic product questions) without human touch, while routing complex or ambiguous cases through Zapier to the brand&rsquo;s support team.</p>
+        <p>We haven&rsquo;t been involved in operations since handoff, so we can&rsquo;t speak to current production status or long-term volume metrics. What we can speak to is the build: a working pipeline, a clean handoff, and a system that fit the brand&rsquo;s actual scale rather than over-engineering for hypothetical scale.</p>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">06 What we&rsquo;d do differently</span><h2 class="h-md">Today we would buy before building, and calibrate the threshold on real email.</h2></div>
+      <div class="split-body features cols-1">
+        <div class="feature"><h3>Tooling has caught up</h3><p>In 2023, OpenAI and Zapier was the right choice for a fast build. Today we&rsquo;d evaluate purpose-built tools like Gorgias, Re:amaze with LLM features, or vertical-specific agents before writing a custom pipeline. For a single-brand deployment, the build-vs-buy maths has shifted toward buy.</p></div>
+        <div class="feature"><h3>Confidence calibration matters more than we thought</h3><p>The conservative threshold we shipped with worked, but we did not have a principled way to set it; it was tuned by trial. Today we&rsquo;d build a small held-out evaluation set from the brand&rsquo;s actual email history to calibrate the threshold against real escalation cost versus miss rate.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap cs-end" style="margin-top:var(--section)">
+    <div class="actions">
+      <a href="projects.html" class="btn btn-ghost">All work</a>
+      <a href="project_phonx.html" class="btn btn-ink">Next: Phonx AI</a>
+    </div>
+  </div>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="h-display">Send us the workflow your team still does by hand.</h2>
+      <p class="lead">Tell us what your team does by hand today. We&rsquo;ll come back with what is worth automating, what isn&rsquo;t, and what a first version would take.</p>
+      <div class="actions">
+        <a href="contact.html" class="btn btn-ink">Write to Krish and Dhairya</a>
+        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Portfolio deck (PDF, 0.5 MB)</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p>Production AI systems: voice agents, knowledge graphs, workflow automation, and the backend and cloud infrastructure they run on.</p>
+        <a href="contact.html" class="btn btn-ghost-light">Start a project</a>
+      </div>
+      <div class="foot-col">
+        <h2>Work</h2>
+        <a href="project_phonx.html">Phonx AI Voice Platform</a>
+        <a href="project_vkg.html">Vector Knowledge Graph</a>
+        <a href="project_kyc.html">Know Your Commodity</a>
+        <a href="project_satellite.html">Satellite ML</a>
+        <a href="project_avara.html">E-commerce Automation</a>
+      </div>
+      <div class="foot-col">
+        <h2>Firm</h2>
+        <a href="services.html">Services</a>
+        <a href="approach.html">How we work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h2>Materials</h2>
+        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" target="_blank" rel="noopener">Portfolio deck (PDF)</a>
+        <a href="mailto:krish0920@gmail.com">krish0920@gmail.com</a>
+      </div>
+    </div>
+    <p class="foot-mark" aria-hidden="true">Avara Labs</p>
+    <div class="foot-base">
+      <p>&copy; 2026 Avara Labs, run by Krish Shah and Dhairya Pareek</p>
+      <p>Photography from Unsplash contributors and USGS</p>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

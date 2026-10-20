@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Know Your Commodity case study — Avara Labs</title>
+  <meta name="description" content="A live agri-market intelligence platform for Indian agriculture: government mandi prices and a 14-day price predictor that is honest about its uncertainty.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Avara Labs">
+  <meta property="og:title" content="Know Your Commodity case study — Avara Labs">
+  <meta property="og:description" content="A live agri-market intelligence platform for Indian agriculture: government mandi prices and a 14-day price predictor that is honest about its uncertainty.">
+  <meta property="og:image" content="assets/og-image.png">
+  <link rel="icon" type="image/png" href="assets/logos/avara-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&amp;display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" class="brand"><img src="assets/logos/avara-logo.png" alt="" width="30" height="30">Avara Labs</a>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html" aria-current="page">Work</a></li>
+        <li><a href="approach.html">How we work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-ink">Send a project brief</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="cs-hero">
+    <div class="wrap">
+      <a class="link back" href="projects.html">All work</a>
+      <span class="caption">Case study: agri-market intelligence</span>
+      <h1 class="cs-title">Know Your Commodity.</h1>
+      <p class="cs-lede">A live commodity-intelligence platform for Indian agriculture: government mandi prices, market analysis, and a 14-day price predictor that is honest about its uncertainty.</p>
+      <dl class="facts">
+        <div><dt>Product</dt><dd>Know Your Commodity (KYC Agri), HnyB Tech Incubations</dd></div>
+        <div><dt>Role</dt><dd>Dhairya Pareek, Technology Lead</dd></div>
+        <div><dt>Year</dt><dd>2026</dd></div>
+        <div><dt>Status</dt><dd>Live at <a class="link" href="https://kycagri.com" target="_blank" rel="noopener">kycagri.com</a></dd></div>
+      </dl>
+    </div>
+  </section>
+  <img class="page-photo" src="img/agri-forecasting.jpg" alt="Grain market scene for agricultural price forecasting">
+
+  <div class="wrap">
+    <figure class="figure" style="margin-top:80px">
+      <figcaption class="figure-cap"><span class="caption">Price data and predictor architecture</span><span class="caption muted">Solid: data flow. Dashed: storage.</span></figcaption>
+      <div class="figure-body">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 330"
+             role="img" aria-labelledby="kyc-diag-title kyc-diag-desc">
+          <title id="kyc-diag-title">Know Your Commodity price data and predictor architecture</title>
+          <desc id="kyc-diag-desc">Government Agmarknet price data is pulled on a schedule into a mandi price service that stores daily snapshots. A forecast engine runs adaptive Holt smoothing and returns a 14-day forecast with an uncertainty band. The Next.js app proxies these through server-side routes and gates the predictor behind a premium plan. A language model served by Unwind AI turns forecasts into plain-language explanations. MongoDB stores articles, users and subscriptions.</desc>
+
+          <defs>
+            <marker id="kyc-arh" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,1 L7,4 L0,7 Z" fill="#000d10"/>
+            </marker>
+            <marker id="kyc-arh-d" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,1 L7,4 L0,7 Z" fill="#8e8e95"/>
+            </marker>
+          </defs>
+
+          <style>.d-arrow{marker-end:url(#kyc-arh)} .d-dashed{marker-end:url(#kyc-arh-d)}</style>
+
+          <!-- 1. Agmarknet -->
+          <rect x="8" y="70" width="142" height="76" class="d-box"/>
+          <text x="79" y="96" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">Agmarknet</text>
+          <text x="79" y="113" text-anchor="middle" font-size="8" class="d-t2">data.gov.in API</text>
+          <text x="79" y="130" text-anchor="middle" font-size="7.5" class="d-t3">govt mandi prices</text>
+
+          <path d="M150,108 L190,108" class="d-arrow"/>
+          <text x="170" y="100" text-anchor="middle" font-size="7" class="d-t3">scheduled</text>
+
+          <!-- 2. Mandi service -->
+          <rect x="193" y="70" width="160" height="76" class="d-soft"/>
+          <text x="273" y="96" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">Mandi Price Service</text>
+          <text x="273" y="113" text-anchor="middle" font-size="8" class="d-t2">daily snapshots</text>
+          <text x="273" y="130" text-anchor="middle" font-size="7.5" class="d-t3">commodity, state, market</text>
+
+          <path d="M353,108 L393,108" class="d-arrow"/>
+
+          <!-- 3. Forecast engine (key) -->
+          <rect x="396" y="60" width="176" height="96" class="d-key"/>
+          <text x="484" y="88" text-anchor="middle" font-size="10" font-weight="800" class="d-t1">Forecast Engine</text>
+          <text x="484" y="105" text-anchor="middle" font-size="8" class="d-t2">adaptive Holt smoothing</text>
+          <text x="484" y="121" text-anchor="middle" font-size="7.5" class="d-t3">20 α×β fits, walk-forward error</text>
+          <text x="484" y="137" text-anchor="middle" font-size="7.5" class="d-t3">14-day forecast + uncertainty band</text>
+
+          <path d="M572,108 L612,108" class="d-arrow"/>
+
+          <!-- 4. Next.js app -->
+          <rect x="615" y="70" width="150" height="76" class="d-soft"/>
+          <text x="690" y="96" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">Next.js App</text>
+          <text x="690" y="113" text-anchor="middle" font-size="8" class="d-t2">server-side API proxy</text>
+          <text x="690" y="130" text-anchor="middle" font-size="7.5" class="d-t3">premium gating</text>
+
+          <path d="M765,108 L805,108" class="d-arrow"/>
+
+          <!-- 5. Users -->
+          <rect x="808" y="80" width="64" height="56" class="d-box"/>
+          <text x="840" y="105" text-anchor="middle" font-size="9" font-weight="700" class="d-t1">Traders</text>
+          <text x="840" y="120" text-anchor="middle" font-size="7.5" class="d-t3">&amp; readers</text>
+
+          <!-- 6. LLM explanations -->
+          <rect x="396" y="222" width="176" height="70" class="d-box"/>
+          <text x="484" y="246" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">Unwind AI</text>
+          <text x="484" y="263" text-anchor="middle" font-size="8" class="d-t2">open-weight Llama models</text>
+          <text x="484" y="279" text-anchor="middle" font-size="7.5" class="d-t3">forecast explanations, summaries</text>
+
+          <!-- Forecast → LLM -->
+          <path d="M484,156 L484,219" class="d-arrow"/>
+          <!-- LLM → App -->
+          <path d="M572,257 L660,257 L660,149" class="d-arrow"/>
+
+          <!-- 7. MongoDB -->
+          <rect x="690" y="222" width="150" height="70" class="d-box"/>
+          <text x="765" y="246" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">MongoDB</text>
+          <text x="765" y="263" text-anchor="middle" font-size="8" class="d-t2">articles, users</text>
+          <text x="765" y="279" text-anchor="middle" font-size="7.5" class="d-t3">subscriptions</text>
+          <path d="M720,222 L720,149" class="d-dashed"/>
+
+          <!-- Legend -->
+          <text x="8" y="322" font-size="7.5" class="d-t3">Solid arrows = data and forecast flow, Dashed arrow = storage</text>
+        </svg>
+      </div>
+      <p class="scroll-note">Scroll sideways to see the full diagram.</p>
+      <div class="chips"><span>Statistical model, disclosed as such</span><span>Synthetic-data share reported per forecast</span><span>AI keys kept server-side</span></div>
+    </figure>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">01 Overview</span><h2 class="h-md">A live agri-market platform, with Dhairya Pareek leading the technology.</h2></div>
+      <div class="split-body prose">
+        <p>Know Your Commodity is an agri-market intelligence platform for traders, agri-businesses and market operators. It combines independent coverage of crop markets, trade and policy with live government mandi prices and a premium price predictor.</p>
+        <p>Dhairya Pareek leads the technology: the price data pipeline, the forecasting service, the AI explanation layer and the product itself. The platform is live at <a class="link" href="https://kycagri.com" target="_blank" rel="noopener">kycagri.com</a>.</p>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">02 Problem</span><h2 class="h-md">Mandi prices are public but hard to use, and a confident wrong forecast does damage.</h2></div>
+      <div class="split-body prose">
+        <p>India publishes wholesale mandi prices through Agmarknet, but the raw data is hard to use: thousands of markets, inconsistent coverage, and gaps where markets do not report. A trader deciding whether to buy or hold wants a simple answer about direction over the next one to two weeks.</p>
+        <p>The risk runs the other way too. A price forecast that looks more certain than it is can do real damage, so the system had to be useful without overstating what it knows.</p>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">03 What was built</span><h2 class="h-md">Ingestion, a separate forecasting service, AI explanations and the product.</h2></div>
+      <div class="split-body">
+        <div class="features cols-1">
+          <div class="feature"><span class="n">01</span><h3>Price ingestion</h3><p>Scheduled pulls from the Agmarknet dataset via the data.gov.in API, stored as daily snapshots and queryable by commodity, state, district, market, variety and grade.</p></div>
+          <div class="feature"><span class="n">02</span><h3>Forecasting service</h3><p>A separate service keeps the heavy data work out of the web app. Each forecast fits adaptive Holt&rsquo;s exponential smoothing, choosing between 20 smoothing settings by walk-forward error on the most recent week, then projects 14 days ahead with an uncertainty band that widens with the horizon.</p></div>
+        </div>
+        <article class="clay solo">
+          <div class="clay-body">
+            <span class="caption">Honest by design</span>
+            <h3>A predictor that admits its limits.</h3>
+            <p>Every forecast response states the model used, carries a disclaimer, and reports how much of its input was backfilled where real market records were sparse. The interface is not allowed to hide any of it. A predictor that admits its limits is more useful than one that pretends not to have any.</p>
+          </div>
+        </article>
+        <div class="features cols-1">
+          <div class="feature"><span class="n">03</span><h3>AI explanations</h3><p>A language model turns each forecast into a plain-language read of the trend and what is driving it. It runs through Unwind AI on open-weight Llama models, behind server-side routes so no keys reach the browser.</p></div>
+          <div class="feature"><span class="n">04</span><h3>Product and access</h3><p>A Next.js app serves the editorial content and price data, with the predictor behind a premium plan. Sign-in uses httpOnly cookies, every write is validated, and sensitive endpoints are rate-limited.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">04 Tech stack</span><h2 class="h-md">Agmarknet data, MongoDB, Node.js, Llama and Next.js.</h2></div>
+      <dl class="split-body stack">
+        <div><dt>Data</dt><dd><span>Agmarknet / data.gov.in</span><span>MongoDB</span></dd></div>
+        <div><dt>Forecast and AI</dt><dd><span>Node.js</span><span>Express</span><span>Ollama</span><span>Llama</span></dd></div>
+        <div><dt>Product</dt><dd><span>Next.js</span><span>React</span><span>Recharts</span><span>Stripe</span></dd></div>
+        <div><dt>Operations</dt><dd><span>Vercel</span><span>Cloudflare Tunnel</span><span>PM2</span><span>Docker</span></dd></div>
+      </dl>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">05 Outcomes</span><h2 class="h-md">Live, with a 14-day horizon and 20 smoothing settings tested per forecast.</h2></div>
+      <div class="split-body metrics">
+        <div class="metric"><strong>Live</strong><span>In production</span><p>Public at kycagri.com, with editorial coverage, government price data and the premium predictor.</p></div>
+        <div class="metric"><strong>14-day</strong><span>Forecast horizon</span><p>Short-horizon forecasts with an uncertainty band, deliberately not extended further than the method supports.</p></div>
+        <div class="metric"><strong>20</strong><span>Settings per forecast</span><p>Smoothing parameters chosen per commodity and market by walk-forward error, not fixed once for every series.</p></div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">06 What we&rsquo;d do differently</span><h2 class="h-md">Held-out accuracy, visible gaps, richer inputs, freshness monitoring.</h2></div>
+      <div class="split-body features">
+        <div class="feature"><h3>Measure accuracy on held-out data</h3><p>The error figure shown alongside each forecast is measured on the same data the model was fitted to, so it flatters the model. A proper backtest on held-out weeks, per commodity, would give buyers a number they can rely on.</p></div>
+        <div class="feature"><h3>Show gaps instead of filling them</h3><p>Where markets stop reporting, the service backfills to keep the series continuous, and says so. Today we would sooner widen the band or pool nearby markets than generate data at all.</p></div>
+        <div class="feature"><h3>Give the model more to see</h3><p>Trend smoothing only sees past prices. Arrival volumes, weather and policy changes move mandi prices too; the next step is a model that uses them, with the current method kept as the baseline it has to beat.</p></div>
+        <div class="feature"><h3>Treat data freshness as a feature</h3><p>The most common production problem was not the model but stale or missing data upstream. Freshness monitoring and visible &ldquo;last updated&rdquo; status should have been there from day one.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap cs-end" style="margin-top:var(--section)">
+    <div class="actions">
+      <a href="projects.html" class="btn btn-ghost">All work</a>
+      <a href="https://kycagri.com" class="btn btn-ghost" target="_blank" rel="noopener">Visit kycagri.com</a>
+      <a href="project_satellite.html" class="btn btn-ink">Next: Satellite ML</a>
+    </div>
+  </div>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="h-display">Send us the workflow your team still does by hand.</h2>
+      <p class="lead">Tell us what your team does by hand today. We&rsquo;ll come back with what is worth automating, what isn&rsquo;t, and what a first version would take.</p>
+      <div class="actions">
+        <a href="contact.html" class="btn btn-ink">Write to Krish and Dhairya</a>
+        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Portfolio deck (PDF, 0.5 MB)</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p>Production AI systems: voice agents, knowledge graphs, workflow automation, and the backend and cloud infrastructure they run on.</p>
+        <a href="contact.html" class="btn btn-ghost-light">Start a project</a>
+      </div>
+      <div class="foot-col">
+        <h2>Work</h2>
+        <a href="project_phonx.html">Phonx AI Voice Platform</a>
+        <a href="project_vkg.html">Vector Knowledge Graph</a>
+        <a href="project_kyc.html">Know Your Commodity</a>
+        <a href="project_satellite.html">Satellite ML</a>
+        <a href="project_avara.html">E-commerce Automation</a>
+      </div>
+      <div class="foot-col">
+        <h2>Firm</h2>
+        <a href="services.html">Services</a>
+        <a href="approach.html">How we work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h2>Materials</h2>
+        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" target="_blank" rel="noopener">Portfolio deck (PDF)</a>
+        <a href="mailto:krish0920@gmail.com">krish0920@gmail.com</a>
+      </div>
+    </div>
+    <p class="foot-mark" aria-hidden="true">Avara Labs</p>
+    <div class="foot-base">
+      <p>&copy; 2026 Avara Labs, run by Krish Shah and Dhairya Pareek</p>
+      <p>Photography from Unsplash contributors and USGS</p>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

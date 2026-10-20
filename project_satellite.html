@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Satellite ML Poppy Detection case study — Avara Labs</title>
+  <meta name="description" content="CNN-based opium poppy detection on Sentinel-2 imagery: a research proof of concept built by Krish Shah at Scanpoint Geomatics.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Avara Labs">
+  <meta property="og:title" content="Satellite ML Poppy Detection case study — Avara Labs">
+  <meta property="og:description" content="CNN-based opium poppy detection on Sentinel-2 imagery: a research proof of concept built by Krish Shah at Scanpoint Geomatics.">
+  <meta property="og:image" content="assets/og-image.png">
+  <link rel="icon" type="image/png" href="assets/logos/avara-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&amp;display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" class="brand"><img src="assets/logos/avara-logo.png" alt="" width="30" height="30">Avara Labs</a>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html" aria-current="page">Work</a></li>
+        <li><a href="approach.html">How we work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-ink">Send a project brief</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="cs-hero">
+    <div class="wrap">
+      <a class="link back" href="projects.html">All work</a>
+      <span class="caption">Prior work: satellite ML</span>
+      <h1 class="cs-title">Satellite ML Poppy Detection.</h1>
+      <p class="cs-lede">CNN-based opium poppy detection on Sentinel-2 imagery: a research proof of concept built by Krish Shah at Scanpoint Geomatics.</p>
+      <dl class="facts">
+        <div><dt>Client</dt><dd><img src="assets/logos/sgl-logo.png" alt="">Scanpoint Geomatics Ltd. (SGL), ISRO technology partner. Client logo used with permission.</dd></div>
+        <div><dt>Role</dt><dd>Krish Shah, ML Engineer (internal R&amp;D at SGL)</dd></div>
+        <div><dt>Year</dt><dd>2024</dd></div>
+        <div><dt>Status</dt><dd>Research POC, F1 0.87 on held-out test data</dd></div>
+      </dl>
+    </div>
+  </section>
+  <img class="page-photo" src="img/satellite-ml.jpg" alt="Illustrative aerial view of agricultural field patterns">
+  <div class="wrap"><p class="caption muted" style="padding-top:14px;font-size:15px">AI-generated illustrative aerial scene, not project imagery.</p></div>
+
+  <div class="wrap">
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">01 Overview</span><h2 class="h-md">A research proof of concept at Scanpoint Geomatics, an ISRO technology partner.</h2></div>
+      <div class="split-body prose">
+        <p>A research proof of concept built by Krish Shah while at Scanpoint Geomatics, an Indian geospatial company and ISRO technology development partner. The goal was to evaluate whether convolutional neural networks could detect opium poppy cultivation in Sentinel-2 satellite imagery, a workflow currently dependent on manual analyst review across very large geographies.</p>
+        <p>The project used labelled training data from Afghanistan, provided by SGL, and produced a working end-to-end pipeline: from raw Sentinel-2 scenes through to coordinate-aligned shapefile outputs compatible with QGIS and SGL&rsquo;s IGiS platform.</p>
+        <p>This was R&amp;D and was never deployed; productisation decisions sat with SGL.</p>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">02 Problem</span><h2 class="h-md">Manual analyst review does not scale to the areas poppy cultivation covers.</h2></div>
+      <div class="split-body prose">
+        <p>Sentinel-2 provides freely available 10-metre resolution imagery globally with frequent revisit times, but raw imagery is only pixels. Turning it into actionable detections requires either an army of trained analysts or a model that can do the first pass automatically.</p>
+        <p>The question SGL wanted answered was: can a CNN trained on labelled Afghan imagery produce detections accurate enough that a human analyst&rsquo;s role shifts from search to verification?</p>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">03 What was built</span><h2 class="h-md">A pipeline from raw Sentinel-2 scenes to shapefiles that open in QGIS and IGiS.</h2></div>
+      <div class="split-body">
+        <div class="features cols-1">
+          <div class="feature"><span class="n">01</span><h3>Imagery ingestion</h3><p>Sentinel-2 scenes parsed with embedded geospatial metadata preserved, so every prediction can be traced back to real-world coordinates.</p></div>
+          <div class="feature"><span class="n">02</span><h3>Tiling</h3><p>Large scenes split into overlapping patches with the geographic index preserved for downstream reassembly. Overlap matters because field boundaries near tile edges otherwise get cut in half.</p></div>
+          <div class="feature"><span class="n">03</span><h3>CNN classification</h3><p>The model was trained on the SGL-provided labelled dataset from Afghanistan. Class imbalance was the dominant training challenge: poppy fields are a tiny fraction of total agricultural area, so naive sampling gives a model that learns to predict &ldquo;not poppy&rdquo; almost all the time.</p></div>
+        </div>
+        <article class="clay solo">
+          <div class="clay-body">
+            <span class="caption">Core training challenge</span>
+            <h3>Class imbalance, not architecture.</h3>
+            <p>Poppy fields are a small fraction of total agricultural area, so without balanced sampling the model degenerates to predicting the majority class. Solving this first is what made the F1 0.87 result possible.</p>
+          </div>
+        </article>
+        <div class="features cols-1">
+          <div class="feature"><span class="n">04</span><h3>Post-processing and GIS export</h3><p>Tile-level predictions merged, noise artefacts suppressed, and final outputs written as shapefile polygons that load directly into QGIS and SGL&rsquo;s IGiS platform without further processing.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">04 Architecture</span><h2 class="h-md">Four stages, each preserving real-world coordinates.</h2></div>
+      <div class="split-body features">
+        <div class="feature"><h3>Imagery ingestion</h3><p>Sentinel-2 scenes loaded with embedded geospatial metadata preserved for coordinate-accurate downstream outputs.</p></div>
+        <div class="feature"><h3>Tiling</h3><p>Scenes split into overlapping geographic patches with the index preserved, so tile-level predictions can be reassembled into full-scene polygons.</p></div>
+        <div class="feature"><h3>CNN classification</h3><p>Model trained on the labelled Afghanistan dataset. Class-balanced sampling addresses the dominant training challenge: positives are a tiny fraction of total agricultural area.</p></div>
+        <div class="feature"><h3>Post-processing and GIS export</h3><p>Tile predictions merged, noise suppressed, and final outputs written as shapefile polygons compatible with QGIS and SGL&rsquo;s IGiS platform.</p></div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">05 Tech stack</span><h2 class="h-md">Sentinel-2, GDAL, PyTorch and QGIS.</h2></div>
+      <dl class="split-body stack">
+        <div><dt>Imagery and geospatial</dt><dd><span>Sentinel-2 (ESA)</span><span>GDAL</span><span>GeoPandas</span></dd></div>
+        <div><dt>Modelling</dt><dd><span>Python</span><span>PyTorch</span><span>OpenCV</span></dd></div>
+        <div><dt>Output and integration</dt><dd><span>QGIS</span><span>SGL IGiS</span><span>Docker</span></dd></div>
+      </dl>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">06 Outcomes</span><h2 class="h-md">F1 0.87 on the held-out test set, run end to end in Docker.</h2></div>
+      <div class="split-body">
+        <div class="metric" style="max-width:320px"><strong>0.87</strong><span>F1 on held-out test data</span></div>
+        <div class="prose">
+          <p>An F1 score of 0.87 on the held-out test set: strong enough to demonstrate the approach works for the use case, while leaving meaningful room for productisation improvements: false-positive characterisation, generalisation across non-Afghan geographies, and integration with revisit-time workflows.</p>
+          <p>The pipeline ran end to end in Docker, was reproducible across runs, and produced GIS outputs that loaded cleanly into IGiS without manual intervention.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">07 What we&rsquo;d do differently</span><h2 class="h-md">Today we would start from a pre-trained backbone and spend the time on data.</h2></div>
+      <div class="split-body features cols-1">
+        <div class="feature"><h3>Start with a pre-trained backbone</h3><p>The 2024 build used a custom CNN. Today we&rsquo;d start with a pre-trained segmentation backbone, such as SegFormer or a Sentinel-2-specific foundation model, and fine-tune from there. There has been real progress on geospatial foundation models; the labelling effort would be the same while the model architecture work would be smaller.</p></div>
+        <div class="feature"><h3>Data quality over architecture</h3><p>That is how we think about most ML projects now: time is better spent on data quality and the surrounding pipeline than on architecture, unless the architecture is genuinely the research question.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap cs-end" style="margin-top:var(--section)">
+    <div class="actions">
+      <a href="projects.html" class="btn btn-ghost">All work</a>
+      <a href="project_avara.html" class="btn btn-ink">Next: E-commerce automation</a>
+    </div>
+  </div>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="h-display">Send us the workflow your team still does by hand.</h2>
+      <p class="lead">Tell us what your team does by hand today. We&rsquo;ll come back with what is worth automating, what isn&rsquo;t, and what a first version would take.</p>
+      <div class="actions">
+        <a href="contact.html" class="btn btn-ink">Write to Krish and Dhairya</a>
+        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Portfolio deck (PDF, 0.5 MB)</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p>Production AI systems: voice agents, knowledge graphs, workflow automation, and the backend and cloud infrastructure they run on.</p>
+        <a href="contact.html" class="btn btn-ghost-light">Start a project</a>
+      </div>
+      <div class="foot-col">
+        <h2>Work</h2>
+        <a href="project_phonx.html">Phonx AI Voice Platform</a>
+        <a href="project_vkg.html">Vector Knowledge Graph</a>
+        <a href="project_kyc.html">Know Your Commodity</a>
+        <a href="project_satellite.html">Satellite ML</a>
+        <a href="project_avara.html">E-commerce Automation</a>
+      </div>
+      <div class="foot-col">
+        <h2>Firm</h2>
+        <a href="services.html">Services</a>
+        <a href="approach.html">How we work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h2>Materials</h2>
+        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" target="_blank" rel="noopener">Portfolio deck (PDF)</a>
+        <a href="mailto:krish0920@gmail.com">krish0920@gmail.com</a>
+      </div>
+    </div>
+    <p class="foot-mark" aria-hidden="true">Avara Labs</p>
+    <div class="foot-base">
+      <p>&copy; 2026 Avara Labs, run by Krish Shah and Dhairya Pareek</p>
+      <p>Photography from Unsplash contributors and USGS</p>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

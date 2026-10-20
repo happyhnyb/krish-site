@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Enterprise Vector Knowledge Graph case study — Avara Labs</title>
+  <meta name="description" content="A reusable Neo4j knowledge graph architecture for compliance-aware document intelligence, deployed in insurance and piloted in research.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Avara Labs">
+  <meta property="og:title" content="Enterprise Vector Knowledge Graph case study — Avara Labs">
+  <meta property="og:description" content="A reusable Neo4j knowledge graph architecture for compliance-aware document intelligence, deployed in insurance and piloted in research.">
+  <meta property="og:image" content="assets/og-image.png">
+  <link rel="icon" type="image/png" href="assets/logos/avara-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&amp;display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" class="brand"><img src="assets/logos/avara-logo.png" alt="" width="30" height="30">Avara Labs</a>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html" aria-current="page">Work</a></li>
+        <li><a href="approach.html">How we work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-ink">Send a project brief</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="cs-hero">
+    <div class="wrap">
+      <a class="link back" href="projects.html">All work</a>
+      <span class="caption">Case study: knowledge and compliance</span>
+      <h1 class="cs-title">Enterprise Vector Knowledge Graph.</h1>
+      <p class="cs-lede">A reusable knowledge graph architecture for compliance-aware document intelligence, deployed in insurance, piloted in research.</p>
+      <dl class="facts">
+        <div><dt>Type</dt><dd>Knowledge graph and document intelligence architecture</dd></div>
+        <div><dt>Role</dt><dd>Architect and Builder</dd></div>
+        <div><dt>Deployments</dt><dd>Phonx AI (production), research institute (pilot)</dd></div>
+        <div><dt>Stack</dt><dd>Neo4j, Python, FastAPI, OpenAI embeddings, Docker</dd></div>
+      </dl>
+    </div>
+  </section>
+  <img class="page-photo" src="img/knowledge-compliance.jpg" alt="Secure document workspace for a knowledge and compliance system">
+
+  <div class="wrap">
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">01 Overview</span><h2 class="h-md">A Neo4j knowledge graph that enforces compliance rules at retrieval time.</h2></div>
+      <div class="split-body prose">
+        <p>A reusable architecture for knowledge graph-based document intelligence, designed for compliance-sensitive domains where retrieval needs to be traceable, relationship-aware, and bounded by explicit rules.</p>
+        <p>The core idea is to treat a Neo4j knowledge graph as the retrieval layer, with vector embeddings on graph nodes for semantic search and explicit edges encoding compliance boundaries, entity relationships, and domain logic. Queries resolve through a combination of graph traversal and semantic similarity, rather than flat vector search alone.</p>
+        <p>Built once for Phonx AI&rsquo;s insurance compliance use case and structured to be redeployable. A second deployment is running in a research institution pilot, retrieving across academic literature and institutional documentation.</p>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">02 Problem</span><h2 class="h-md">Why flat vector search falls short on regulated documents.</h2></div>
+      <div class="split-body">
+        <div class="prose"><p>Standard retrieval-augmented generation retrieves by semantic similarity: find the chunks most similar to the query, inject them into the prompt, generate a response. That works well for general knowledge bases. It breaks down in compliance-sensitive domains for three reasons:</p></div>
+        <div class="features cols-1">
+          <div class="feature"><h3>Semantic drift</h3><p>In regulatory text, similar-sounding language can mean legally distinct things. A flat cosine match on embeddings does not distinguish between a general statement and an overriding specific exception.</p></div>
+          <div class="feature"><h3>No relationship reasoning</h3><p>Questions like &ldquo;does plan A cover procedure B for patient type C&rdquo; require traversing relationships: plan, benefit, eligibility rule, exception. Flat retrieval can surface all the relevant chunks but cannot assemble the answer from the relationships between them.</p></div>
+          <div class="feature"><h3>No compliance boundaries</h3><p>Standard RAG generates a response then filters it, or relies on prompting to constrain output. For regulated domains, constraints need to be upstream of generation, encoded in how retrieval is structured rather than added afterwards.</p></div>
+        </div>
+        <article class="clay solo">
+          <div class="clay-body">
+            <span class="caption">Core insight</span>
+            <h3>A different data model, not a faster search.</h3>
+            <p>The graph is not a performance optimisation over flat vector search. It makes relationship traversal and compliance-boundary enforcement first-class operations at retrieval time, not filtering passes after generation.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">03 How retrieval works</span><h2 class="h-md">How a query moves through the graph, in five steps.</h2></div>
+      <div class="split-body features cols-1">
+        <div class="feature"><span class="n">01</span><h3>Query embedding</h3><p>The incoming query is embedded using the same model used to embed graph nodes at ingestion time, ensuring the vector space is consistent.</p></div>
+        <div class="feature"><span class="n">02</span><h3>Semantic node retrieval</h3><p>A vector similarity search over Neo4j&rsquo;s vector index returns the top-k semantically relevant nodes: entities, regulations, policy sections, or domain concepts depending on the deployment.</p></div>
+        <div class="feature"><span class="n">03</span><h3>Graph neighbourhood expansion</h3><p>For each retrieved node, the graph is traversed outward through typed relationships: prerequisites, exceptions, superseding rules, related entities. This surfaces context that a flat embedding match would miss entirely.</p></div>
+        <div class="feature"><span class="n">04</span><h3>Compliance boundary check</h3><p>Before any content reaches the LLM context, explicit compliance edges are checked. Content connected to a boundary node that restricts what the system can assert is flagged or excluded at this stage.</p></div>
+        <div class="feature"><span class="n">05</span><h3>Context assembly and generation</h3><p>The retrieved and validated subgraph is serialised into a structured context for the LLM. Every assertion in the generated response is traceable to a specific node and its source document.</p></div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">04 Architecture</span><h2 class="h-md">Rules live in the graph as edges, so the model cannot talk its way past them.</h2></div>
+      <div class="split-body features">
+        <div class="feature"><span class="n">Graph model</span><h3>Neo4j as the retrieval substrate</h3><p>Neo4j handles both vector search (via its native vector index) and graph traversal in a single query. This avoids the synchronisation complexity of maintaining a separate vector store alongside a graph database.</p></div>
+        <div class="feature"><span class="n">Embeddings</span><h3>Node-level vector embeddings</h3><p>Embeddings are attached to individual nodes, not to document chunks. Semantic search returns graph entities rather than text passages, so the result is already in a form that supports relationship traversal.</p></div>
+        <div class="feature"><span class="n">Compliance encoding</span><h3>Rules as edge types, not prompts</h3><p>Compliance constraints are modelled as explicit relationship types in the graph schema. The compliance check at step 04 is a graph query, not a prompt instruction. It cannot be overridden by the LLM.</p></div>
+        <div class="feature"><span class="n">Ingestion</span><h3>Parse, extract, upsert</h3><p>Documents are parsed, entities and relationships are extracted, and the graph is upserted. The pipeline is idempotent: re-running on an updated document updates the affected nodes without duplicating the graph.</p></div>
+        <div class="feature"><span class="n">API surface</span><h3>FastAPI query endpoint</h3><p>A single POST endpoint accepts the query, runs the retrieval pipeline, and returns a structured response with the generated answer and the source nodes that grounded it. Consumers can render citations or ignore them.</p></div>
+        <div class="feature"><span class="n">Portability</span><h3>Domain-agnostic graph schema</h3><p>The core schema (nodes, vector index, compliance edges, audit log) is domain-agnostic. Domain-specific content comes from the ingestion configuration, not the graph model. This is what made the research deployment possible without rebuilding the system.</p></div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">05 Audit logging and encryption</span><h2 class="h-md">Every answer is logged with the source nodes that grounded it.</h2></div>
+      <div class="split-body features cols-1">
+        <div class="feature"><h3>Tamper-evident audit log</h3><p>Every query and its response are logged with the source node IDs that grounded the answer, a timestamp, and a hash of the response content. The log is append-only and the hash makes post-hoc modification detectable. Compliance officers can reconstruct exactly what the system retrieved and asserted for any past query.</p></div>
+        <div class="feature"><h3>Encryption at rest and in transit</h3><p>The Neo4j instance and the document store are encrypted at rest. The API surface is HTTPS only. For the Phonx deployment running on-premises, the encryption configuration was a hard requirement before going live, because the knowledge graph indexes regulated insurance documents and policyholder-adjacent data.</p></div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">06 Deployments</span><h2 class="h-md">Two deployments: Phonx AI insurance, and a research pilot.</h2></div>
+      <div class="split-body features cols-1">
+        <div class="feature"><span class="n">Deployment 1</span><h3>Phonx AI, US insurance</h3><p>The knowledge graph is the compliance backbone for Phonx&rsquo;s voice AI system. It holds insurance plan structures, eligibility rules, carrier-specific policies, and the regulatory boundaries that govern what the voice agent can assert during a live call. Graph traversal runs inside the real-time inference loop, so the retrieval result must land within the one-second turn budget.</p><span class="status">Production</span></div>
+        <div class="feature"><span class="n">Deployment 2</span><h3>Research institution, document intelligence</h3><p>A pilot deployment for a research institution indexing academic literature, internal reports, and institutional documentation. The compliance boundary model is lighter here; the priority is relationship-aware retrieval across a large corpus, with citation traceability for researchers reviewing the sources behind any answer.</p><span class="status pilot">Pilot</span></div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">07 Tech stack</span><h2 class="h-md">Neo4j, Python, FastAPI, OpenAI embeddings and Docker.</h2></div>
+      <dl class="split-body stack">
+        <div><dt>Graph and storage</dt><dd><span>Neo4j</span><span>Neo4j Vector Index</span></dd></div>
+        <div><dt>Embeddings</dt><dd><span>OpenAI Embeddings</span></dd></div>
+        <div><dt>API and backend</dt><dd><span>Python</span><span>FastAPI</span></dd></div>
+        <div><dt>Infrastructure</dt><dd><span>Docker</span><span>AWS EC2</span></dd></div>
+      </dl>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">08 What we&rsquo;d do differently</span><h2 class="h-md">Today we would design the schema longer and build the evaluation set first.</h2></div>
+      <div class="split-body features cols-1">
+        <div class="feature"><h3>Invest more in the graph schema design upfront</h3><p>The schema evolved during the Phonx build as we discovered new relationship types the compliance model needed. Schema changes in a populated Neo4j graph are manageable but costly. Starting again, we&rsquo;d spend two or three times as long on schema design before ingesting any production data, mapping all compliance edge types and their directionality before the first document touches the graph.</p></div>
+        <div class="feature"><h3>Build the evaluation harness earlier</h3><p>Retrieval quality in a knowledge graph is harder to measure than in flat RAG because &ldquo;correctness&rdquo; depends on both the retrieved nodes and the traversal path. We built the evaluation tooling late, which meant early tuning decisions on neighbourhood expansion depth were made by inspection rather than measurement. A held-out query set with expected source-node annotations should be the first artefact, not a late addition.</p></div>
+        <div class="feature"><h3>Abstract the compliance edge model earlier for reuse</h3><p>The research deployment reused the core architecture but required significant work to re-parameterise the compliance edge model for a different domain. That gap was smaller than rebuilding from scratch, but it pointed to a real opportunity: the compliance boundary layer should be a first-class configuration surface, not something that requires touching the schema definition directly.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap cs-end" style="margin-top:var(--section)">
+    <div class="actions">
+      <a href="projects.html" class="btn btn-ghost">All work</a>
+      <a href="project_kyc.html" class="btn btn-ink">Next: Know Your Commodity</a>
+    </div>
+  </div>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="h-display">Send us the workflow your team still does by hand.</h2>
+      <p class="lead">Tell us what your team does by hand today. We&rsquo;ll come back with what is worth automating, what isn&rsquo;t, and what a first version would take.</p>
+      <div class="actions">
+        <a href="contact.html" class="btn btn-ink">Write to Krish and Dhairya</a>
+        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Portfolio deck (PDF, 0.5 MB)</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p>Production AI systems: voice agents, knowledge graphs, workflow automation, and the backend and cloud infrastructure they run on.</p>
+        <a href="contact.html" class="btn btn-ghost-light">Start a project</a>
+      </div>
+      <div class="foot-col">
+        <h2>Work</h2>
+        <a href="project_phonx.html">Phonx AI Voice Platform</a>
+        <a href="project_vkg.html">Vector Knowledge Graph</a>
+        <a href="project_kyc.html">Know Your Commodity</a>
+        <a href="project_satellite.html">Satellite ML</a>
+        <a href="project_avara.html">E-commerce Automation</a>
+      </div>
+      <div class="foot-col">
+        <h2>Firm</h2>
+        <a href="services.html">Services</a>
+        <a href="approach.html">How we work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h2>Materials</h2>
+        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" target="_blank" rel="noopener">Portfolio deck (PDF)</a>
+        <a href="mailto:krish0920@gmail.com">krish0920@gmail.com</a>
+      </div>
+    </div>
+    <p class="foot-mark" aria-hidden="true">Avara Labs</p>
+    <div class="foot-base">
+      <p>&copy; 2026 Avara Labs, run by Krish Shah and Dhairya Pareek</p>
+      <p>Photography from Unsplash contributors and USGS</p>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

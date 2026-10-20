@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Phonx AI case study — Avara Labs</title>
+  <meta name="description" content="Production voice AI for US insurance: sub-second turn-taking, compliance-aware reasoning and CRM-native execution.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Avara Labs">
+  <meta property="og:title" content="Phonx AI case study — Avara Labs">
+  <meta property="og:description" content="Production voice AI for US insurance: sub-second turn-taking, compliance-aware reasoning and CRM-native execution.">
+  <meta property="og:image" content="assets/og-image.png">
+  <link rel="icon" type="image/png" href="assets/logos/avara-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&amp;display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" class="brand"><img src="assets/logos/avara-logo.png" alt="" width="30" height="30">Avara Labs</a>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html" aria-current="page">Work</a></li>
+        <li><a href="approach.html">How we work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-ink">Send a project brief</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="cs-hero">
+    <div class="wrap">
+      <a class="link back" href="projects.html">All work</a>
+      <span class="caption">Case study: voice infrastructure</span>
+      <h1 class="cs-title">Phonx AI.</h1>
+      <p class="cs-lede">Production voice AI for US insurance: sub-second turn-taking, compliance-aware reasoning, CRM-native execution.</p>
+      <dl class="facts">
+        <div><dt>Industry</dt><dd>US insurance (Medicare, ACA enrollment)</dd></div>
+        <div><dt>Role</dt><dd>Technical Lead and Systems Architect</dd></div>
+        <div><dt>Stack</dt><dd>Twilio, Groq, ElevenLabs, Neo4j, Redis, AWS</dd></div>
+        <div><dt>Status</dt><dd>Outbound in production, inbound in pilot</dd></div>
+      </dl>
+    </div>
+  </section>
+  <img class="page-photo" src="img/voice-agent-ops.jpg" alt="Headset and workspace for a production voice-agent system" style="object-position:50% 62%">
+
+  <div class="wrap">
+    <figure class="figure" style="margin-top:80px">
+      <figcaption class="figure-cap"><span class="caption">System architecture</span><span class="caption muted">Solid: hot path. Dashed: async.</span></figcaption>
+      <div class="figure-body">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460"
+             role="img" aria-labelledby="phx-title phx-desc">
+          <title id="phx-title">Phonx real-time voice AI architecture</title>
+          <desc id="phx-desc">Diagram showing PSTN audio moving through Twilio, Krisp, Groq Whisper, conversation orchestration, Groq LLM, ElevenLabs TTS, Redis, Neo4j, GoHighLevel, and Postgres.</desc>
+
+          <defs>
+            <marker id="arh" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,1 L7,4 L0,7 Z" fill="#000d10"/>
+            </marker>
+            <marker id="arh-d" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,1 L7,4 L0,7 Z" fill="#8e8e95"/>
+            </marker>
+          </defs>
+
+          <style>.d-arrow{marker-end:url(#arh)} .d-dashed{marker-end:url(#arh-d)}</style>
+
+          <!-- ── Row 1: Telephony ── -->
+          <rect x="8"   y="20"  width="118" height="56" class="d-box"/>
+          <text x="67"  y="43"  text-anchor="middle" font-size="10" font-weight="700" class="d-t1">PSTN caller</text>
+          <text x="67"  y="59"  text-anchor="middle" font-size="8.5" class="d-t2">8 kHz audio</text>
+
+          <path d="M126,48 L154,48" class="d-arrow"/>
+
+          <rect x="157" y="8"   width="200" height="72" class="d-key"/>
+          <text x="257" y="34"  text-anchor="middle" font-size="11" font-weight="800" class="d-t1">Twilio</text>
+          <text x="257" y="51"  text-anchor="middle" font-size="8" class="d-t2">Programmable Voice + Media Streams</text>
+
+          <path d="M357,44 L374,44" class="d-arrow"/>
+
+          <rect x="376" y="8"   width="220" height="72" class="d-key"/>
+          <text x="486" y="34"  text-anchor="middle" font-size="11" font-weight="800" class="d-t1">Krisp</text>
+          <text x="486" y="51"  text-anchor="middle" font-size="8" class="d-t2">Noise suppression + turn-taking (acoustic)</text>
+
+          <path d="M257,80 L257,108 L87,108 L87,156" class="d-arrow"/>
+
+          <!-- ── Real-time inference loop ── -->
+          <rect x="8"   y="100" width="595" height="247" class="d-loop"/>
+          <text x="22"  y="120" font-size="7.5" font-weight="700" letter-spacing="0.12em" class="d-ta">REAL-TIME INFERENCE LOOP</text>
+          <text x="22"  y="135" font-size="7.5" class="d-t3">~1s end-to-end turn budget (caller stop → first TTS audio frame)</text>
+          <text x="22"  y="149" font-size="7" class="d-t3">↑ audio back to caller</text>
+
+          <rect x="22"  y="158" width="130" height="55" class="d-soft"/>
+          <text x="87"  y="180" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">Upsampler</text>
+          <text x="87"  y="197" text-anchor="middle" font-size="8" class="d-t2">8 kHz → 16 kHz</text>
+
+          <path d="M152,185 L179,185" class="d-arrow"/>
+
+          <rect x="181" y="158" width="150" height="55" class="d-soft"/>
+          <text x="256" y="180" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">Groq Whisper</text>
+          <text x="256" y="197" text-anchor="middle" font-size="8" class="d-t2">Streaming STT, multilingual</text>
+
+          <path d="M331,185 L358,185" class="d-arrow"/>
+
+          <rect x="360" y="148" width="194" height="78" class="d-key"/>
+          <text x="457" y="177" text-anchor="middle" font-size="10" font-weight="800" class="d-t1">Conversation Manager</text>
+          <text x="457" y="195" text-anchor="middle" font-size="8" class="d-t2">Turn state, orchestration</text>
+
+          <path d="M457,226 L457,244 L256,244 L256,255" class="d-arrow"/>
+
+          <rect x="181" y="257" width="150" height="55" class="d-soft"/>
+          <text x="256" y="279" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">Groq LLM</text>
+          <text x="256" y="296" text-anchor="middle" font-size="8" class="d-t2">Reasoning + response tokens</text>
+
+          <path d="M181,284 L155,284" class="d-arrow"/>
+
+          <rect x="22"  y="257" width="130" height="55" class="d-soft"/>
+          <text x="87"  y="279" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">ElevenLabs TTS</text>
+          <text x="87"  y="296" text-anchor="middle" font-size="8" class="d-t2">Streamed audio out</text>
+
+          <!-- ── Data / State layer ── -->
+          <path d="M554,172 L612,148" class="d-arrow"/>
+          <path d="M554,202 L612,263" class="d-arrow"/>
+
+          <rect x="612" y="100" width="270" height="118" class="d-soft"/>
+          <text x="747" y="132" text-anchor="middle" font-size="11" font-weight="800" class="d-t1">Neo4j VKG</text>
+          <text x="747" y="151" text-anchor="middle" font-size="8" class="d-t2">Plans, eligibility, regulatory edges</text>
+          <text x="747" y="167" text-anchor="middle" font-size="8" class="d-t2">Vector embeddings on nodes</text>
+
+          <rect x="612" y="227" width="270" height="110" class="d-soft"/>
+          <text x="747" y="257" text-anchor="middle" font-size="11" font-weight="800" class="d-t1">Redis</text>
+          <text x="747" y="275" text-anchor="middle" font-size="8" class="d-t2">Live session state, turn history</text>
+          <text x="747" y="291" text-anchor="middle" font-size="8" class="d-t2">Async outcome queue</text>
+
+          <!-- ── Async path ── -->
+          <text x="8" y="358" font-size="7.5" class="d-t3">After call completes — async path (does not block conversation)</text>
+          <path d="M747,337 L747,363 L87,363 L87,378" class="d-dashed"/>
+
+          <rect x="8"   y="380" width="163" height="56" class="d-box"/>
+          <text x="89"  y="403" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">CRM Sync worker</text>
+          <text x="89"  y="419" text-anchor="middle" font-size="8" class="d-t2">Retry + DLQ</text>
+
+          <path d="M171,408 L368,408" class="d-dashed"/>
+
+          <rect x="370" y="380" width="195" height="56" class="d-soft"/>
+          <text x="467" y="403" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">GoHighLevel</text>
+          <text x="467" y="419" text-anchor="middle" font-size="8" class="d-t2">Structured outcomes</text>
+
+          <path d="M565,408 L609,408" class="d-dashed"/>
+
+          <rect x="612" y="380" width="270" height="56" class="d-soft"/>
+          <text x="747" y="403" text-anchor="middle" font-size="10" font-weight="700" class="d-t1">Postgres on EC2</text>
+          <text x="747" y="419" text-anchor="middle" font-size="8" class="d-t2">Call records, customers</text>
+
+          <text x="8" y="452" font-size="7.5" class="d-t3">All services run on AWS EC2, Hot path = solid arrows, Async path = dashed arrows</text>
+        </svg>
+      </div>
+      <p class="scroll-note">Scroll sideways to see the full diagram.</p>
+    </figure>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">01 Overview</span><h2 class="h-md">A voice agent that books US insurance enrollments under a one-second turn budget.</h2></div>
+      <div class="split-body">
+        <div class="prose">
+          <p>Phonx AI is a voice agent system built for US insurance agencies running high-volume outbound enrollment and inbound policyholder support. It places and receives calls through Twilio, runs real-time speech understanding and reasoning under a one-second turn budget, and writes outcomes back into the agency&rsquo;s CRM as structured events rather than transcripts.</p>
+          <p>The system is designed around a hard constraint that defines voice AI in this market: a human caller will hang up if the agent feels slow, robotic, or evasive on regulated topics. Every architectural decision in Phonx, from the choice of inference provider to how state is held across barge-ins, is a decision about preserving that one-second budget without losing accuracy on insurance-specific reasoning.</p>
+        </div>
+        <article class="clay solo">
+          <div class="clay-body">
+            <span class="caption">Key constraint</span>
+            <h3>One second, end of speech to first audio.</h3>
+            <p>The one-second turn budget (end of utterance to first TTS audio frame) is the single number every architectural decision is tested against. Inference provider, retrieval strategy, barge-in handling: all chosen to protect that margin.</p>
+          </div>
+        </article>
+        <div class="prose"><p>Today it handles outbound enrollment booking flows in production and is moving inbound qualification toward pilot.</p></div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">02 Problem</span><h2 class="h-md">Three pressures that legacy IVR and offshore call centres cannot meet together.</h2></div>
+      <div class="split-body">
+        <div class="features cols-1">
+          <div class="feature"><h3>Volume is bursty and seasonal</h3><p>Open Enrollment Periods compress months of demand into weeks. Headcount can&rsquo;t flex that fast, and missed calls are missed policies.</p></div>
+          <div class="feature"><h3>Compliance is non-negotiable</h3><p>Every statement an agent makes about coverage, eligibility, or benefits is a potential audit finding. Scripts drift, agents improvise, and quality monitoring covers a sample of calls, never all of them.</p></div>
+          <div class="feature"><h3>The CRM is the source of truth, not the call</h3><p>A call that doesn&rsquo;t land in the CRM as a structured outcome (booked appointment, qualified lead, opted-out contact) effectively didn&rsquo;t happen. Most voice tools produce transcripts; agencies need state changes.</p></div>
+        </div>
+        <p class="cs-note">Phonx is built to absorb the volume, hold the compliance line on every call, and write directly into the workflows agencies already run.</p>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">03 Solution</span><h2 class="h-md">Four layers, each with its own latency budget and failure mode.</h2></div>
+      <dl class="split-body rows">
+        <div><dt>Telephony</dt><dd><p>Audio moves between the caller and the system over Twilio&rsquo;s Media Streams, with Krisp running noise suppression and acoustic turn-taking on the inbound leg before any model sees the audio.</p></dd></div>
+        <div><dt>Inference</dt><dd><p>Real-time speech and language inference runs ASR, LLM reasoning, and TTS on a streaming pipeline. Groq handles both Whisper-based STT and LLM inference where token-level latency is the constraint; ElevenLabs handles voice synthesis where naturalness under interruption matters.</p></dd></div>
+        <div><dt>Knowledge</dt><dd><p>Conversation state and domain knowledge live across Redis, for hot session state and fast reads during a turn, and Neo4j, for the insurance knowledge graph. The graph encodes plan structures, eligibility rules, and the relationships between products, carriers, and regulatory boundaries so the agent&rsquo;s answers are grounded in domain logic as well as retrieved text.</p></dd></div>
+        <div><dt>Execution</dt><dd><p>Structured outcomes write back into GoHighLevel today, with persistent records in Postgres on EC2. CRM sync runs out of band so the conversation never blocks on it. The four layers are deliberately decoupled: telephony failures don&rsquo;t corrupt state, model latency spikes don&rsquo;t break call control.</p></dd></div>
+      </dl>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">04 Architecture</span><h2 class="h-md">Inbound path, real-time loop, and persistence kept apart.</h2></div>
+      <div class="split-body">
+        <div class="features">
+          <div class="feature"><span class="n">Inbound path</span><h3>Telephony gateway: Twilio and Krisp</h3><p>Twilio absorbs carrier-side complexity: DID provisioning, STIR/SHAKEN, regional routing. Krisp runs noise suppression and acoustic turn-taking before STT, because residual noise on US PSTN calls degrades transcription accuracy more than it degrades human comprehension.</p></div>
+          <div class="feature"><span class="n">Inbound path</span><h3>Streaming STT: Groq Whisper</h3><p>PSTN audio arrives at 8 kHz and is upsampled to 16 kHz before transcription, since Whisper expects 16 kHz. Streaming, not batch: partial transcripts feed the conversation manager so the system reasons in parallel instead of waiting for the full utterance.</p></div>
+          <div class="feature"><span class="n">Real-time loop</span><h3>Conversation manager</h3><p>The orchestration layer. Holds turn state, manages barge-in when a caller starts speaking mid-response, consumes the acoustic turn-taking signal from Krisp, and decides when to commit a partial response to TTS versus wait. Fallbacks and timeouts are first-class.</p></div>
+          <div class="feature"><span class="n">Real-time loop</span><h3>LLM reasoning: Groq inference</h3><p>Groq is chosen for token throughput at low latency. For a voice agent, the cost ceiling is tokens per second under a one-second budget as much as tokens per dollar. Reasoning prompts stay narrow and grounded; insurance-specific knowledge comes from retrieval, not prompt bloat.</p></div>
+          <div class="feature"><span class="n">Real-time loop</span><h3>TTS: ElevenLabs</h3><p>Streamed back over the Twilio media channel. Voice choice and prosody matter for trust on insurance calls. The agent is not trying to pass as human, but it cannot sound like an old IVR either.</p></div>
+          <div class="feature"><span class="n">Persistence and sync</span><h3>Knowledge layer: Neo4j vector knowledge graph</h3><p>The proprietary asset. Plans, carriers, eligibility rules, and regulatory constraints are modelled as a graph with vector embeddings on relevant nodes. A question like &ldquo;does this plan cover insulin pumps under Part D&rdquo; resolves through graph traversal and semantic match together.</p></div>
+          <div class="feature"><span class="n">Persistence and sync</span><h3>State and sync: Redis, Postgres, GHL connector</h3><p>Redis holds live session state: turn history, extracted entities, and compliance flags. Postgres on EC2 holds persistent call records. Once the call closes, a separate worker writes structured outcomes into GoHighLevel. CRM writes are async, retryable, and never block the caller experience.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">05 Engineering challenges</span><h2 class="h-md">The hard problems behind the one-second budget.</h2></div>
+      <div class="split-body features cols-1">
+        <div class="feature"><span class="n">One-second budget</span><h3>Holding a one-second turn budget end to end</h3><p>Total latency = audio capture + STT + end-of-utterance detection + LLM + TTS + audio playback. Each component has a budget; none can take the whole pie. Groq inference and streaming STT partials create most of the headroom. The remaining margin is spent on retrieval against the knowledge graph, which has its own timeout and degraded fallback using a smaller cached subgraph.</p></div>
+        <div class="feature"><span class="n">Barge-in integrity</span><h3>Barge-in without context loss</h3><p>When a caller interrupts mid-response, the system has to stop TTS playback quickly, decide whether the new utterance replaces or refines the prior turn, and preserve the partial response so the agent does not repeat itself if the interruption was just a backchannel like &ldquo;uh-huh&rdquo; or &ldquo;right&rdquo;. This is handled in the conversation manager, not outsourced to the LLM.</p></div>
+        <div class="feature"><span class="n">Compliance at retrieval</span><h3>Compliance as a runtime constraint, not a post-hoc filter</h3><p>Insurance regulations restrict what an agent can say about coverage, premiums, and eligibility. The constraint is encoded as edges in the knowledge graph, connecting benefit claims to the regulatory boundaries that govern them. The agent does not generate a claim and then filter it; retrieval is constrained before generation.</p></div>
+        <div class="feature"><span class="n">Dropped call recovery</span><h3>State recovery on dropped calls</h3><p>PSTN calls drop. When a call disconnects mid-flow, Redis holds session state long enough that a callback can resume from the last completed turn rather than starting over. This matters most in enrollment flows, where re-collecting fields kills conversion.</p></div>
+        <div class="feature"><span class="n">CRM resilience</span><h3>CRM synchronisation under failure</h3><p>GoHighLevel&rsquo;s API can hit rate limits and latency spikes. The CRM connector queues outcome events in Redis and replays them with exponential backoff, with a dead-letter path for repeated failures. The call experience never depends on CRM availability in real time.</p></div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">06 Tech stack</span><h2 class="h-md">Twilio, Krisp, Groq, ElevenLabs, Neo4j, Redis, Postgres and GoHighLevel.</h2></div>
+      <dl class="split-body stack">
+        <div><dt>Telephony and media</dt><dd><span>Twilio</span><span>Krisp</span></dd></div>
+        <div><dt>Inference</dt><dd><span>Groq Whisper STT</span><span>Groq LLM</span><span>ElevenLabs TTS</span></dd></div>
+        <div><dt>Data</dt><dd><span>Neo4j</span><span>Redis</span><span>Postgres on EC2</span></dd></div>
+        <div><dt>Infrastructure</dt><dd><span>AWS EC2</span><span>Docker</span><span>Python</span></dd></div>
+        <div><dt>Integration</dt><dd><span>GoHighLevel</span></dd></div>
+      </dl>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">07 Impact and results</span><h2 class="h-md">Under one second p50; outbound in production, inbound in pilot.</h2></div>
+      <div class="split-body metrics">
+        <div class="metric"><strong>&lt;1s</strong><span>End-to-end turn latency</span><p>Measured from end of utterance to first TTS audio frame, p50 across production outbound calls.</p></div>
+        <div class="metric"><strong>Prod</strong><span>Outbound enrollment</span><p>Currently handling open enrollment booking flows for partner agencies in the US insurance market.</p></div>
+        <div class="metric"><strong>Pilot</strong><span>Inbound underway</span><p>Qualification and routing flows in active development, scheduled for production rollout following pilot validation.</p></div>
+      </div>
+    </section>
+
+    <section class="cs split">
+      <div class="split-label sticky"><span class="caption">08 Engagement path</span><h2 class="h-md">From a call-flow audit to a production rollout in three steps.</h2></div>
+      <div class="split-body features cols-1">
+        <div class="feature"><span class="n">01</span><h3>Call flow audit</h3><p>Map current intents, volume distribution, and compliance boundaries against the existing agency stack.</p></div>
+        <div class="feature"><span class="n">02</span><h3>Scoped outbound pilot</h3><p>Deploy on a single high-volume flow, typically enrollment booking, measured against the agency&rsquo;s existing baseline.</p></div>
+        <div class="feature"><span class="n">03</span><h3>Production rollout with CRM sync</h3><p>Full integration with the agency&rsquo;s CRM and telephony, with compliance logging and outcome tracking.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap cs-end" style="margin-top:var(--section)">
+    <div class="actions">
+      <a href="projects.html" class="btn btn-ghost">All work</a>
+      <a href="assets/docs/phonx_client_pitch.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Case study deck (PDF)</a>
+      <a href="project_vkg.html" class="btn btn-ink">Next: Vector Knowledge Graph</a>
+    </div>
+  </div>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="h-display">Send us the workflow your team still does by hand.</h2>
+      <p class="lead">Tell us what your team does by hand today. We&rsquo;ll come back with what is worth automating, what isn&rsquo;t, and what a first version would take.</p>
+      <div class="actions">
+        <a href="contact.html" class="btn btn-ink">Write to Krish and Dhairya</a>
+        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Portfolio deck (PDF, 0.5 MB)</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p>Production AI systems: voice agents, knowledge graphs, workflow automation, and the backend and cloud infrastructure they run on.</p>
+        <a href="contact.html" class="btn btn-ghost-light">Start a project</a>
+      </div>
+      <div class="foot-col">
+        <h2>Work</h2>
+        <a href="project_phonx.html">Phonx AI Voice Platform</a>
+        <a href="project_vkg.html">Vector Knowledge Graph</a>
+        <a href="project_kyc.html">Know Your Commodity</a>
+        <a href="project_satellite.html">Satellite ML</a>
+        <a href="project_avara.html">E-commerce Automation</a>
+      </div>
+      <div class="foot-col">
+        <h2>Firm</h2>
+        <a href="services.html">Services</a>
+        <a href="approach.html">How we work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h2>Materials</h2>
+        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" target="_blank" rel="noopener">Portfolio deck (PDF)</a>
+        <a href="mailto:krish0920@gmail.com">krish0920@gmail.com</a>
+      </div>
+    </div>
+    <p class="foot-mark" aria-hidden="true">Avara Labs</p>
+    <div class="foot-base">
+      <p>&copy; 2026 Avara Labs, run by Krish Shah and Dhairya Pareek</p>
+      <p>Photography from Unsplash contributors and USGS</p>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
