@@ -33,8 +33,8 @@ requestAnimationFrame(tickVelocity);
 const hero = $('#home');
 const hands = $('#hands');
 const handH = $('.hand-h', hands), handR = $('.hand-r', hands), spark = $('.spark', hands);
-const TIP_H = { x: .996, y: .221, ratio: 834 / 1684 };
-const TIP_R = { x: .002, y: .711, ratio: 1325 / 1900 };
+const TIP_H = { x: .998, y: .692, ratio: 692 / 1154 };
+const TIP_R = { x: .001, y: .033, ratio: 724 / 1205 };
 let mouseX = 0, mouseY = 0;
 addEventListener('pointermove', (e) => {
   mouseX = e.clientX / innerWidth - .5; mouseY = e.clientY / innerHeight - .5;
@@ -42,8 +42,8 @@ addEventListener('pointermove', (e) => {
 const placeHands = (p, t) => {
   const W = hands.clientWidth, H = hands.clientHeight;
   const narrow = W < 700;
-  const hw = W * (narrow ? .66 : .44), rw = W * (narrow ? .48 : .31);
-  const cx = W / 2, cy = H * (narrow ? .64 : .655);
+  const hw = W * (narrow ? .56 : .38), rw = hw * (1205 / 1154) * .8;
+  const cx = W / 2, cy = H * (narrow ? .6 : .57);
   const k = ease(clamp(p));
   const gap = lerp(W * .55, W * (narrow ? .012 : .008), k);
   const bob = reduced ? 0 : Math.sin(t * 1.1) * 5;
@@ -51,10 +51,10 @@ const placeHands = (p, t) => {
   // human: its fingertip sits at (cx - gap, cy)
   const hx = cx - gap - hw * TIP_H.x, hy = cy - hw * TIP_H.ratio * TIP_H.y;
   handH.style.width = `${hw}px`;
-  handH.style.transform = `translate3d(${hx}px,${hy + bob}px,0) rotateY(${tiltY}deg) rotateX(${tiltX}deg) rotate(${9 - (1 - k) * 12}deg)`;
+  handH.style.transform = `translate3d(${hx}px,${hy + bob}px,0) rotateY(${tiltY}deg) rotateX(${tiltX}deg) rotate(${(1 - k) * -10}deg)`;
   const rx = cx + gap - rw * TIP_R.x, ry = cy - rw * TIP_R.ratio * TIP_R.y;
   handR.style.width = `${rw}px`;
-  handR.style.transform = `translate3d(${rx}px,${ry - bob * .8}px,0) rotateY(${tiltY}deg) rotateX(${tiltX}deg) rotate(${-3 + (1 - k) * 8}deg)`;
+  handR.style.transform = `translate3d(${rx}px,${ry - bob * .8}px,0) rotateY(${tiltY}deg) rotateX(${tiltX}deg) rotate(${(1 - k) * 10}deg)`;
   const glow = clamp((k - .78) / .2);
   spark.style.transform = `translate3d(${cx}px,${cy}px,0) translate(-50%,-50%) scale(${.4 + glow * .6 + (reduced ? 0 : Math.sin(t * 6) * .06 * glow)})`;
   spark.style.opacity = glow;
