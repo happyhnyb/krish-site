@@ -111,7 +111,7 @@ body::after {
 .hands { position: absolute; inset: 0; pointer-events: none; perspective: 1400px; overflow: hidden; }
 .hand { position: absolute; left: 0; top: 0; will-change: transform; transform-origin: 50% 50%; }
 .hand img { width: 100%; height: auto; }
-.hand-h { transform-origin: 99.6% 22.1%; -webkit-mask-image: linear-gradient(100deg, transparent 4%, #000 34%); mask-image: linear-gradient(100deg, transparent 4%, #000 34%); }
+.hand-h { transform-origin: 99.6% 22.1%; -webkit-mask-image: linear-gradient(100deg, transparent 14%, #000 42%); mask-image: linear-gradient(100deg, transparent 14%, #000 42%); }
 .hand-r { transform-origin: .2% 71.1%; -webkit-mask-image: linear-gradient(270deg, transparent 2%, #000 30%); mask-image: linear-gradient(270deg, transparent 2%, #000 30%); }
 .spark {
   position: absolute; left: 0; top: 0; width: 120px; height: 120px; border-radius: 50%; opacity: 0;
