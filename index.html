@@ -3,250 +3,295 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <title>Avara Labs — AI agents in production</title>
-  <meta name="description" content="Avara Labs designs and builds AI agents that take phone calls, read regulated documents and clear support inboxes, inside the tools your team already uses.">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Avara Labs">
-  <meta property="og:title" content="Avara Labs — AI agents in production">
-  <meta property="og:description" content="Avara Labs designs and builds AI agents that take phone calls, read regulated documents and clear support inboxes, inside the tools your team already uses.">
-  <meta property="og:image" content="assets/og-image.png">
-  <link rel="icon" type="image/png" href="assets/logos/avara-logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&amp;display=swap" rel="stylesheet">
-  <script>document.documentElement.classList.add('js');</script>
+  <title>Avara Labs | Production AI agents for calls, documents and inboxes</title>
+  <meta name="description" content="Voice agents, knowledge agents and workflow automation, built by the two engineers who scope them.">
+  <meta property="og:title" content="Avara Labs">
+  <meta property="og:description" content="Voice agents, knowledge agents and workflow automation, built by the two engineers who scope them.">
+  <link rel="icon" type="image/png" href="assets/avara-logo.png">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-head">
-  <div class="wrap">
-    <nav class="nav" aria-label="Main">
-      <a href="index.html" class="brand"><img src="assets/logos/avara-logo.png" alt="" width="30" height="30">Avara Labs</a>
-      <ul class="nav-links">
-        <li><a href="services.html">Services</a></li>
-        <li><a href="projects.html">Work</a></li>
-        <li><a href="approach.html">How we work</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <a href="contact.html" class="btn btn-ink">Send a project brief</a>
-      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
-    </nav>
-  </div>
+
+<header class="hdr" id="hdr">
+  <a class="brand" href="#home" aria-label="Avara Labs, home">
+    <img src="assets/avara-logo.png" alt="" width="26" height="26"><span>Avara Labs</span>
+  </a>
+  <button class="menu-pill" id="menu-btn" aria-expanded="false" aria-controls="menu"><span class="dot" aria-hidden="true"><i></i><i></i></span>Menu</button>
+  <nav class="tag-pill" aria-label="Systems">
+    <a href="#systems">Voice agents</a>
+    <a href="#systems">Knowledge agents</a>
+  </nav>
+  <a class="cta-pill" href="#contact">
+    <span class="cta-ico" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14"><path d="M3 17V3a14 14 0 0 1 14 14z" fill="currentColor"/></svg></span>
+    Start a project
+  </a>
 </header>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Main">
+    <a href="#home"><small>01</small>Home</a>
+    <a href="#systems"><small>02</small>Systems</a>
+    <a href="#work"><small>03</small>Work</a>
+    <a href="#process"><small>04</small>Process</a>
+    <a href="about.html"><small>05</small>About</a>
+    <a href="#faq"><small>06</small>Questions</a>
+    <a href="#contact"><small>07</small>Contact</a>
+  </nav>
+  <div class="menu-side">
+    <p>Krish Shah and Dhairya Pareek scope, architect and build every system.</p>
+    <a href="mailto:krish0920@gmail.com">krish0920@gmail.com</a>
+    <a href="mailto:dhairya@hnyb.in">dhairya@hnyb.in</a>
+    <a href="assets/krish_shah_combined_portfolio_with_logos.pdf" target="_blank" rel="noopener">Portfolio deck (PDF, 0.5 MB)</a>
+  </div>
+</div>
+
 <main id="main">
-  <section class="hero">
-    <div class="wrap">
-      <p class="wordmark" aria-hidden="true"><span>Avara Labs</span></p>
+
+  <!-- Hero: the reach -->
+  <section class="hero" id="home" data-scene>
+    <div class="hero-stick">
+      <div class="orb" aria-hidden="true"></div>
+      <h1 class="hero-title">
+        <span class="l1">Avara Labs</span>
+        <span class="l2"><em>Intelligence</em> that answers</span>
+      </h1>
+      <div class="hands" id="hands" aria-hidden="true">
+        <div class="hand hand-h"><img src="img/hand-human.webp" alt="" width="1684" height="834" fetchpriority="high"></div>
+        <div class="hand hand-r"><img src="img/hand-robot.webp" alt="" width="1900" height="1325" fetchpriority="high"></div>
+        <span class="spark"></span>
+      </div>
       <div class="hero-foot">
-        <h1>Agents in<br>production.</h1>
         <div class="hero-copy">
-          <p class="hero-intro">We design and build AI agents that take phone calls, read regulated documents and clear support inboxes, inside the tools your team already uses. Every system ships with a speed target, your compliance rules built in, and a hand-off to a person for anything it should not handle.</p>
-          <div class="actions">
-            <a href="contact.html" class="btn btn-ink">Send a project brief</a>
-            <a href="projects.html" class="btn btn-ghost">Read the five case studies</a>
-          </div>
+          <p class="kicker">Production AI agents</p>
+          <p class="lede">Agents that answer your phones, your documents and your inbox, built into the tools your team already runs.</p>
         </div>
-      </div>
-    </div>
-    <img class="hero-photo" src="img/hero-ai-ops.jpg" alt="An engineer on a call at a desk, with a system diagram on the wall screen" fetchpriority="high">
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <dl class="numbers">
-        <div class="number"><dt>4+</dt><dd>years building production systems</dd></div>
-        <div class="number"><dt>8+</dt><dd>agent systems deployed</dd></div>
-        <div class="number"><dt>10,000+</dt><dd>hours of manual work removed</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section class="section" id="systems">
-    <div class="wrap split">
-      <div class="split-label sticky">
-        <span class="caption">Systems</span>
-        <h2 class="h-lg">Three kinds of system on one shared backend.</h2>
-        <a class="link" href="services.html">Services and what ships with each build</a>
-      </div>
-      <div class="split-body features">
-        <a class="feature" href="services.html#voice">
-          <span class="n">01</span>
-          <h3>Voice agents</h3>
-          <p>Answer and place calls at volume, with each outcome written into your CRM as a structured record.</p>
-          <p class="meta">Twilio, Groq, ElevenLabs</p>
-        </a>
-        <a class="feature" href="services.html#knowledge">
-          <span class="n">02</span>
-          <h3>Knowledge agents</h3>
-          <p>Answers from your own documents, each one traceable to its source and checked against your compliance rules.</p>
-          <p class="meta">Neo4j, vector embeddings</p>
-        </a>
-        <a class="feature" href="services.html#workflow">
-          <span class="n">03</span>
-          <h3>Workflow automation</h3>
-          <p>Routine inbox and back-office work handled; anything the model is unsure of goes to a person.</p>
-          <p class="meta">OpenAI, Shopify, Zapier</p>
-        </a>
-        <a class="feature" href="services.html#underneath">
-          <span class="n">04</span>
-          <h3>Underneath every build</h3>
-          <p>Orchestration, backend, infrastructure, data pipelines and requirements work are part of every system, not a separate line item.</p>
-          <p class="meta">Python, FastAPI, Docker, AWS</p>
-        </a>
+        <span class="scroll-cue" aria-hidden="true"><i></i></span>
+        <ul class="chips" aria-label="What we build">
+          <li><a href="#systems">Voice</a></li>
+          <li><a href="#systems">Knowledge</a></li>
+          <li><a href="#systems">Workflow</a></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="section" id="work">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="caption">Work</span>
-        <h2 class="h-lg">Five builds, each written up with its limits.</h2>
+  <!-- Tunnel -->
+  <section class="tunnel" id="about" data-dark data-scene>
+    <div class="tunnel-stick">
+      <canvas class="tunnel-gl" id="tunnel" aria-hidden="true"></canvas>
+      <div class="tunnel-word" aria-hidden="true"><span id="tword">VOICE</span></div>
+      <ol class="tunnel-steps">
+        <li class="on"><b>01</b> Voice agents: calls answered under one second</li>
+        <li><b>02</b> Knowledge agents: answers traced to their source</li>
+        <li><b>03</b> Workflow automation: unsure cases go to a person</li>
+      </ol>
+      <p class="tunnel-copy" id="tcopy">Most AI projects do not fail on the model. They fail on everything around it: unclear requirements, brittle integrations, and no plan for the cases the model gets wrong. That is the part we are built for.</p>
+    </div>
+  </section>
+
+  <!-- Numbers -->
+  <section class="stats" id="numbers" aria-label="Avara Labs in numbers">
+    <div class="stat" data-tone="teal">
+      <div class="stat-n"><strong data-count="4">4</strong><span>+</span><button class="plus" type="button" aria-label="About this number" data-tip="Since 2022, across insurance, agri-markets, geospatial and e-commerce">+</button></div>
+      <p>Years building production systems</p>
+      <div class="track" aria-hidden="true"><i></i></div>
+    </div>
+    <div class="stat" data-tone="pearl">
+      <div class="stat-n"><strong data-count="8">8</strong><span>+</span><button class="plus" type="button" aria-label="About this number" data-tip="Voice, knowledge, forecasting and automation systems handed over">+</button></div>
+      <p>Agent systems deployed</p>
+      <div class="track" aria-hidden="true"><i></i></div>
+    </div>
+    <div class="stat" data-tone="lilac">
+      <div class="stat-n"><span>&lt;</span><strong data-count="1">1</strong><span>s</span><button class="plus" type="button" aria-label="About this number" data-tip="Median voice turn on the Phonx AI deployment, barge-in included">+</button></div>
+      <p>Voice turn latency, p50 in production</p>
+      <div class="track" aria-hidden="true"><i></i></div>
+    </div>
+    <div class="stat" data-tone="teal">
+      <div class="stat-n"><strong data-count="0.87" data-dec="2">0.87</strong><button class="plus" type="button" aria-label="About this number" data-tip="Held-out Sentinel-2 test data, Scanpoint Geomatics research build">+</button></div>
+      <p>F1 on held-out satellite data</p>
+      <div class="track" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+
+  <!-- Systems -->
+  <section class="systems" id="systems">
+    <div class="sec-head">
+      <p class="kicker">Our systems</p>
+      <h2>Four kinds of system, <em>built and handed over</em></h2>
+    </div>
+    <ul class="sys-list">
+      <li>
+        <span class="sys-n">01</span>
+        <h3>Voice agents</h3>
+        <p>Streaming speech, reasoning and synthesis under a sub-second turn budget, with every outcome written into your CRM as a structured record.</p>
+        <span class="sys-stack">Twilio, Groq, ElevenLabs</span>
+      </li>
+      <li>
+        <span class="sys-n">02</span>
+        <h3>Knowledge agents</h3>
+        <p>Neo4j graphs with node-level embeddings, compliance rules encoded as edges, and audit-logged answers that cite their sources.</p>
+        <span class="sys-stack">Neo4j, FastAPI, Embeddings</span>
+      </li>
+      <li>
+        <span class="sys-n">03</span>
+        <h3>Workflow automation</h3>
+        <p>Intent classification, drafted replies and confidence-based escalation, repointed to a new team by configuration, not code.</p>
+        <span class="sys-stack">OpenAI, Shopify, Zapier</span>
+      </li>
+      <li>
+        <span class="sys-n">04</span>
+        <h3>Data and forecasting</h3>
+        <p>Pipelines that keep the data under an AI system fresh, and forecasts that show their uncertainty instead of hiding it.</p>
+        <span class="sys-stack">Python, Agmarknet, Next.js</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Work: the card stack -->
+  <section class="work" id="work">
+    <div class="work-stick">
+      <div class="work-head">
+        <p class="kicker">Case studies</p>
+        <h2 class="work-title"><span>Shipped to production,</span> <em>not to a demo</em></h2>
       </div>
-
-      <article class="clay">
-        <div class="clay-body">
-          <span class="caption">Featured case study: voice infrastructure</span>
-          <h3>Phonx AI Voice Platform</h3>
-          <p>Real-time voice automation for high-volume US insurance workflows: sub-second turn-taking, compliance-aware reasoning, and outcomes written straight into the agency&rsquo;s CRM.</p>
-          <ul>
-            <li>Under 1 s turn latency, p50 in production</li>
-            <li>Outbound enrollment live, inbound in pilot</li>
-          </ul>
-          <div class="actions">
-            <a href="project_phonx.html" class="btn btn-light">Read the Phonx case study</a>
-          </div>
-        </div>
-        <div class="clay-photo"><img src="img/voice-agent-ops.jpg" alt="Headset and workspace for a production voice-agent system" loading="lazy"></div>
-      </article>
-
-      <div class="cards">
-        <a class="card" href="project_vkg.html">
-          <div class="card-photo"><img src="img/knowledge-compliance.jpg" alt="Secure document workspace for a knowledge and compliance system" loading="lazy"></div>
-          <div class="card-text">
-            <span class="caption">Knowledge and compliance</span>
-            <h3>Enterprise Vector Knowledge Graph</h3>
-            <p>Graph-native retrieval for compliance-sensitive documents. Deployed in insurance, piloted in research.</p>
-          </div>
-        </a>
-        <a class="card" href="project_kyc.html">
-          <div class="card-photo"><img src="img/agri-forecasting.jpg" alt="Grain market scene for agricultural price forecasting" loading="lazy"></div>
-          <div class="card-text">
-            <span class="caption">Agri price forecasting</span>
-            <h3>Know Your Commodity</h3>
-            <p>Government mandi prices and a 14-day price predictor that reports its own uncertainty. Live at kycagri.com.</p>
-          </div>
-        </a>
-        <a class="card" href="project_satellite.html">
-          <div class="card-photo"><img src="img/satellite-ml.jpg" alt="Illustrative aerial view of agricultural field patterns" loading="lazy"></div>
-          <div class="card-text">
-            <span class="caption">Prior work: satellite ML</span>
-            <h3>Satellite ML Poppy Detection</h3>
-            <p>CNN-based detection on Sentinel-2 imagery, 0.87 F1 on held-out data. A research proof of concept.</p>
-          </div>
-        </a>
-        <a class="card" href="project_avara.html">
-          <div class="card-photo"><img src="img/ecommerce-support.jpg" alt="Fulfilment desk for e-commerce customer-support automation" loading="lazy"></div>
-          <div class="card-text">
-            <span class="caption">Automation systems</span>
-            <h3>E-commerce Email Automation</h3>
-            <p>Support email for a Shopify D2C brand: classification, drafting and confidence-based escalation to a person.</p>
-          </div>
-        </a>
+      <div class="stage" id="stage">
+        <button class="card" data-case="phonx" type="button"><img src="img/voice-agent-ops.jpg" alt=""><span class="card-cap"><small>Voice</small>Phonx AI: voice agents for US insurance</span></button>
+        <button class="card" data-case="vkg" type="button"><img src="img/knowledge-compliance.jpg" alt=""><span class="card-cap"><small>Knowledge</small>A knowledge graph that enforces rules at retrieval</span></button>
+        <button class="card" data-case="kyc" type="button"><img src="img/agri-forecasting.jpg" alt=""><span class="card-cap"><small>Forecasting</small>Know Your Commodity: 14-day mandi prices</span></button>
+        <button class="card" data-case="sat" type="button"><img src="img/satellite-ml.jpg" alt=""><span class="card-cap"><small>Satellite ML</small>Poppy detection on Sentinel-2 imagery</span></button>
+        <button class="card" data-case="ecom" type="button"><img src="img/ecommerce-support.jpg" alt=""><span class="card-cap"><small>Automation</small>Support email for a Shopify brand</span></button>
+      </div>
+      <p class="work-hint" id="work-hint">Open a card for the full write-up, limits included</p>
+      <div class="logos" aria-label="Built for and with">
+        <img src="assets/phonx-light.png" alt="Phonx AI" loading="lazy">
+        <img src="assets/kyc-light.png" alt="Know Your Commodity" loading="lazy">
+        <img src="assets/sgl-light.png" alt="Scanpoint Geomatics" loading="lazy">
       </div>
     </div>
   </section>
 
-  <section class="band-dark" id="process">
-    <div class="wrap split">
-      <div class="split-label sticky">
-        <span class="caption">How we work</span>
-        <h2 class="h-lg">Every project runs in four stages.</h2>
-      </div>
-      <div class="split-body">
-        <div class="features cols-1">
-          <div class="feature"><span class="n">01</span><h3>Clarify the real problem</h3><p>Identify constraints, stakeholders, risks and hidden assumptions before a line of code is written.</p></div>
-          <div class="feature"><span class="n">02</span><h3>Design a lean MVP architecture</h3><p>Define interfaces, data flows and AI boundaries before building, so every later decision is faster and less risky.</p></div>
-          <div class="feature"><span class="n">03</span><h3>Build for scale and observability</h3><p>Structure systems for modularity, iteration and debugging from day one, so they can be improved in production.</p></div>
-          <div class="feature"><span class="n">04</span><h3>Deliver, validate and refine</h3><p>Validation continues past launch, because the best systems improve after deployment.</p></div>
-        </div>
-        <a class="link" href="approach.html" style="display:inline-block;margin-top:40px">How a project runs in detail</a>
-      </div>
+  <!-- Process -->
+  <section class="process" id="process">
+    <div class="sec-head">
+      <p class="kicker">How we work</p>
+      <h2>From a 30-minute call <em>to a system in production</em></h2>
+    </div>
+    <ol class="steps">
+      <li><span class="step-n">01</span><h3>Clarify the real problem</h3><p>Constraints, stakeholders, risks and hidden assumptions, mapped before a line of code is written.</p></li>
+      <li><span class="step-n">02</span><h3>Design a lean architecture</h3><p>Interfaces, data flows and AI boundaries defined first, so every later decision is faster and less risky.</p></li>
+      <li><span class="step-n">03</span><h3>Build for observability</h3><p>Modular from day one, with the logging and monitoring that let a system be improved in production.</p></li>
+      <li><span class="step-n">04</span><h3>Deliver, validate, refine</h3><p>Validation continues past launch, because the best systems improve after deployment.</p></li>
+    </ol>
+    <div class="offers">
+      <article><h3>Scoping and architecture</h3><p>A written architecture and delivery plan. Build it with us, with your team, or decide it is not worth building.</p></article>
+      <article><h3>Pilot, then production</h3><p>One high-value workflow first, measured against how it runs today, then a full rollout.</p></article>
+      <article><h3>Senior support for your team</h3><p>Architecture reviews and hands-on engineering for an AI system you already run.</p></article>
     </div>
   </section>
 
-  <section class="section" id="why" style="padding-top:var(--section)">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="caption">Why us</span>
-        <h2 class="h-lg">Six working rules teams hire us for.</h2>
-      </div>
-      <div class="split">
-        <div class="split-label">
-          <p style="margin-top:0">Most AI projects do not fail on the model. They fail on everything around it: unclear requirements, brittle integrations, and no plan for the cases the model gets wrong. That is the part we are built for.</p>
-        </div>
-        <div class="split-body features">
-          <div class="feature"><span class="n">01</span><h3>Built for production, not for demos</h3><p>Our systems run inside real workflows: live phone calls, regulated documents, customer inboxes. Every design decision is tested against how the system behaves in use, not how it looks in a pitch.</p></div>
-          <div class="feature"><span class="n">02</span><h3>Architecture before code</h3><p>We map requirements, interfaces and data flows before building. IREB-certified requirements engineering surfaces technical risk early, while it is still cheap to fix.</p></div>
-          <div class="feature"><span class="n">03</span><h3>Control is designed in</h3><p>Compliance rules are enforced at retrieval, not patched on after generation. Uncertain cases route to a person. Failure paths, timeouts and retries are first-class parts of the system.</p></div>
-          <div class="feature"><span class="n">04</span><h3>It fits the stack you already run</h3><p>Systems are structured around your existing teams, tools and CRM. Where an off-the-shelf component is the right answer, we use it instead of building a platform you do not need.</p></div>
-          <div class="feature"><span class="n">05</span><h3>One team from model to deployment</h3><p>Intelligence layer, APIs, infrastructure and delivery are handled together, so nothing gets lost between a prototype and the thing that actually ships.</p></div>
-          <div class="feature"><span class="n">06</span><h3>Straight answers</h3><p>Each of our case studies states what worked, what the limits were, and what we would approach differently today. You get the same candour during a project.</p></div>
-        </div>
-      </div>
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="sec-head">
+      <p class="kicker">Questions</p>
+      <h2>What clients ask <em>before writing in</em></h2>
+    </div>
+    <div class="faq-list">
+      <details><summary>Who will we actually work with?<i aria-hidden="true"></i></summary><p>Krish Shah and Dhairya Pareek, directly. Krish leads requirements and architecture; Dhairya leads data, forecasting and integrations. The people who scope the system build it.</p></details>
+      <details><summary>Do we need to replace the tools we already use?<i aria-hidden="true"></i></summary><p>No. Systems are built around your existing CRM, telephony, inbox and data. Where an off-the-shelf component is the right answer, we use it.</p></details>
+      <details><summary>How is our data handled?<i aria-hidden="true"></i></summary><p>Access and compliance rules are enforced inside the system, with audit logging where it matters. Sensitive deployments can run inside your own environment; a previous insurance deployment runs on-premises with encryption at rest.</p></details>
+      <details><summary>Who owns what gets built?<i aria-hidden="true"></i></summary><p>You do. The code, configuration and documentation are yours, handed over in a state your own team can run.</p></details>
+      <details><summary>What if AI is not the right answer?<i aria-hidden="true"></i></summary><p>Then we will say so. Some problems are better solved with a rule, a form or a process change, and the scoping step is designed to find that out early.</p></details>
+      <details><summary>What happens after launch?<i aria-hidden="true"></i></summary><p>Systems are monitored in production, thresholds are tuned against real usage, and ongoing support is agreed as part of the scope.</p></details>
     </div>
   </section>
 
-  <section class="cta">
-    <div class="wrap">
-      <h2 class="h-display">Send us the workflow your team still does by hand.</h2>
-      <p class="lead">Tell us what your team does by hand today. We&rsquo;ll come back with what is worth automating, what isn&rsquo;t, and what a first version would take.</p>
-      <div class="actions">
-        <a href="contact.html" class="btn btn-ink">Write to Krish and Dhairya</a>
-        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Portfolio deck (PDF, 0.5 MB)</a>
-      </div>
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="sec-head">
+      <p class="kicker">Start a project</p>
+      <h2>Send us the workflow <em>your team still does by hand</em></h2>
+      <p class="sec-sub">Say what your team does by hand today, who does it and what a good outcome looks like. Krish or Dhairya reads every brief and replies within two business days.</p>
+      <ol class="next">
+        <li><b>A reply within two business days</b> A direct answer, with any questions needed to understand the problem.</li>
+        <li><b>A 30-minute call</b> Free, no deck needed: the workflow, the constraints and the systems it touches.</li>
+        <li><b>A written scope</b> What is worth building first and what it would take, or an honest note if AI is not the answer.</li>
+      </ol>
+      <p class="mails">Or write directly: <a href="mailto:krish0920@gmail.com">krish0920@gmail.com</a> and <a href="mailto:dhairya@hnyb.in">dhairya@hnyb.in</a></p>
     </div>
+    <form class="form" action="https://formsubmit.co/krish0920@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New brief from avaralabs site">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_cc" value="dhairya@hnyb.in">
+      <input type="hidden" name="_next" data-next="thanks.html" value="">
+      <label class="hp">Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+      <div class="row">
+        <label>Name <input name="name" required autocomplete="name"></label>
+        <label>Work email <input type="email" name="email" required autocomplete="email"></label>
+      </div>
+      <div class="row">
+        <label>Company (optional) <input name="company" autocomplete="organization"></label>
+        <label>What do you need?
+          <select name="need">
+            <option>Not sure yet</option>
+            <option>Voice agent</option>
+            <option>Knowledge or document system</option>
+            <option>Workflow automation</option>
+            <option>Architecture review</option>
+            <option>Senior engineering support</option>
+          </select>
+        </label>
+      </div>
+      <label>What are you trying to get done? <textarea name="message" rows="5" required></textarea></label>
+      <div class="form-foot">
+        <button class="send" type="submit"><span class="cta-ico" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14"><path d="M3 17V3a14 14 0 0 1 14 14z" fill="currentColor"/></svg></span>Send the brief</button>
+        <p>No sales sequence. Your message goes straight to the engineers who would build the system.</p>
+      </div>
+    </form>
   </section>
 </main>
 
-<footer class="site-foot">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <p>Production AI systems: voice agents, knowledge graphs, workflow automation, and the backend and cloud infrastructure they run on.</p>
-        <a href="contact.html" class="btn btn-ghost-light">Start a project</a>
-      </div>
-      <div class="foot-col">
-        <h2>Work</h2>
-        <a href="project_phonx.html">Phonx AI Voice Platform</a>
-        <a href="project_vkg.html">Vector Knowledge Graph</a>
-        <a href="project_kyc.html">Know Your Commodity</a>
-        <a href="project_satellite.html">Satellite ML</a>
-        <a href="project_avara.html">E-commerce Automation</a>
-      </div>
-      <div class="foot-col">
-        <h2>Firm</h2>
-        <a href="services.html">Services</a>
-        <a href="approach.html">How we work</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="foot-col">
-        <h2>Materials</h2>
-        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" target="_blank" rel="noopener">Portfolio deck (PDF)</a>
-        <a href="mailto:krish0920@gmail.com">krish0920@gmail.com</a>
-      </div>
-    </div>
-    <p class="foot-mark" aria-hidden="true">Avara Labs</p>
-    <div class="foot-base">
-      <p>&copy; 2026 Avara Labs, run by Krish Shah and Dhairya Pareek</p>
-      <p>Photography from Unsplash contributors and USGS</p>
+<footer class="foot">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marquee">
+      <span><b>Avara Labs</b> Where people and agents work together</span>
+      <span><b>Avara Labs</b> Where people and agents work together</span>
     </div>
   </div>
+  <div class="foot-body">
+    <p class="reveal" id="reveal">Our systems are built to join the adaptability of language models with the discipline of production engineering, for teams in insurance, agriculture, research and commerce.</p>
+    <ul class="chips chips-foot">
+      <li><a href="#work">Case studies</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="assets/krish_shah_combined_portfolio_with_logos.pdf" target="_blank" rel="noopener">Deck (PDF)</a></li>
+    </ul>
+    <div class="foot-mails">
+      <a class="foot-mail" href="mailto:krish0920@gmail.com">krish0920@gmail.com</a>
+      <a class="foot-mail" href="mailto:dhairya@hnyb.in">dhairya@hnyb.in</a>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>&copy; 2026 Avara Labs, run by Krish Shah and Dhairya Pareek</span>
+    <span>Case images are AI-generated illustrations. Robot hand: NASA Robonaut 2, public domain</span>
+  </div>
 </footer>
-<script src="script.js"></script>
+
+<dialog class="case-dialog" id="case-dialog" aria-labelledby="cd-title">
+  <form method="dialog"><button class="cd-close" aria-label="Close">&times;</button></form>
+  <img id="cd-img" alt="">
+  <div class="cd-body">
+    <p class="kicker" id="cd-kicker"></p>
+    <h2 id="cd-title"></h2>
+    <dl id="cd-facts"></dl>
+    <div id="cd-text"></div>
+    <a class="send" href="#contact" id="cd-cta">Talk to us about something similar</a>
+  </div>
+</dialog>
+
+<script src="menu.js"></script>
+<script type="module" src="script.js"></script>
 </body>
 </html>

@@ -3,174 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <title>About — Avara Labs</title>
-  <meta name="description" content="Avara Labs is Krish Shah and Dhairya Pareek: two engineers who scope, architect and build every system themselves.">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Avara Labs">
-  <meta property="og:title" content="About — Avara Labs">
-  <meta property="og:description" content="Avara Labs is Krish Shah and Dhairya Pareek: two engineers who scope, architect and build every system themselves.">
-  <meta property="og:image" content="assets/og-image.png">
-  <link rel="icon" type="image/png" href="assets/logos/avara-logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&amp;display=swap" rel="stylesheet">
-  <script>document.documentElement.classList.add('js');</script>
+  <title>About | Avara Labs</title>
+  <meta name="description" content="Krish Shah and Dhairya Pareek, the two engineers who scope, architect and build every Avara Labs system.">
+  <link rel="icon" type="image/png" href="assets/avara-logo.png">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-about">
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-head">
-  <div class="wrap">
-    <nav class="nav" aria-label="Main">
-      <a href="index.html" class="brand"><img src="assets/logos/avara-logo.png" alt="" width="30" height="30">Avara Labs</a>
-      <ul class="nav-links">
-        <li><a href="services.html">Services</a></li>
-        <li><a href="projects.html">Work</a></li>
-        <li><a href="approach.html">How we work</a></li>
-        <li><a href="about.html" aria-current="page">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <a href="contact.html" class="btn btn-ink">Send a project brief</a>
-      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
-    </nav>
-  </div>
+
+<header class="hdr" id="hdr">
+  <a class="brand" href="index.html" aria-label="Avara Labs, home">
+    <img src="assets/avara-logo.png" alt="" width="26" height="26"><span>Avara Labs</span>
+  </a>
+  <button class="menu-pill" id="menu-btn" aria-expanded="false" aria-controls="menu"><span class="dot" aria-hidden="true"><i></i><i></i></span>Menu</button>
+  <nav class="tag-pill" aria-label="Systems">
+    <a href="index.html#systems">Voice agents</a>
+    <a href="index.html#systems">Knowledge agents</a>
+  </nav>
+  <a class="cta-pill" href="index.html#contact">
+    <span class="cta-ico" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14"><path d="M3 17V3a14 14 0 0 1 14 14z" fill="currentColor"/></svg></span>
+    Start a project
+  </a>
 </header>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Main">
+    <a href="index.html"><small>01</small>Home</a>
+    <a href="index.html#systems"><small>02</small>Systems</a>
+    <a href="index.html#work"><small>03</small>Work</a>
+    <a href="index.html#process"><small>04</small>Process</a>
+    <a href="about.html" aria-current="page"><small>05</small>About</a>
+    <a href="index.html#faq"><small>06</small>Questions</a>
+    <a href="index.html#contact"><small>07</small>Contact</a>
+  </nav>
+  <div class="menu-side">
+    <p>Krish Shah and Dhairya Pareek scope, architect and build every system.</p>
+    <a href="mailto:krish0920@gmail.com">krish0920@gmail.com</a>
+    <a href="mailto:dhairya@hnyb.in">dhairya@hnyb.in</a>
+    <a href="assets/krish_shah_combined_portfolio_with_logos.pdf" target="_blank" rel="noopener">Portfolio deck (PDF, 0.5 MB)</a>
+  </div>
+</div>
+
 <main id="main">
-  <section class="page-hero">
-    <div class="wrap">
-      <span class="caption">About</span>
-      <h1>Two engineers who scope, architect and build every system.</h1>
-      <p class="lead">Avara Labs is an AI systems engineering practice founded by Krish Shah. It builds voice agents, knowledge systems, workflow automation and forecasting tools for teams that need them to work in production. It is senior-led by design: you work directly with the engineers who scope, architect and build each system.</p>
+  <section class="about-hero">
+    <div class="orb" aria-hidden="true"></div>
+    <div class="sec-head">
+      <p class="kicker">About</p>
+      <h1>Two engineers <em>who build what they scope</em></h1>
+      <p class="sec-sub">Avara Labs is an AI systems engineering practice founded by Krish Shah. It builds voice agents, knowledge systems, workflow automation and forecasting tools for teams that need them to work in production. You work directly with the engineers who scope, architect and build each system.</p>
     </div>
   </section>
 
-  <section class="section" id="team">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="caption">Team</span>
-        <h2 class="h-lg">Krish Shah and Dhairya Pareek.</h2>
+  <section class="people" aria-label="Team">
+    <article class="person">
+      <div class="person-pic"><img src="assets/krish-portrait.jpeg" alt="Portrait of Krish Shah" width="1024" height="1536"></div>
+      <div class="person-body">
+        <p class="kicker">Founder</p>
+        <h2>Krish Shah</h2>
+        <p class="person-role">AI agents and systems architect</p>
+        <p>Leads requirements and architecture, and builds the voice and knowledge systems. IREB-certified in requirements engineering, with a background in applied machine-learning research.</p>
+        <ul class="worked">
+          <li><b>Phonx AI</b> Technical lead and systems architect. Real-time voice AI for US insurance enrollment: sub-second turns, compliance-aware reasoning, CRM write-back.</li>
+          <li><b>Knowledge graph</b> Architect and builder. A Neo4j vector graph that enforces compliance rules at retrieval, deployed in insurance.</li>
+          <li><b>Scanpoint Geomatics</b> ML engineer. A CNN that finds poppy cultivation in Sentinel-2 imagery, 0.87 F1 on held-out data.</li>
+        </ul>
+        <a class="person-mail" href="mailto:krish0920@gmail.com">krish0920@gmail.com</a>
       </div>
-      <div class="team">
-        <article class="person">
-          <img src="assets/krish-portrait.jpeg" alt="Portrait of Krish Shah" loading="lazy">
-          <div class="card-text">
-            <h3>Krish Shah</h3>
-            <p class="role">Founder, AI agents and systems architect</p>
-            <p>Leads requirements and architecture, and builds the voice and knowledge systems. IREB-certified in requirements engineering, with a background in applied machine-learning research.</p>
-            <div class="actions-inline"><a class="link" href="project_phonx.html">Phonx AI</a><a class="link" href="project_vkg.html">Knowledge graph</a></div>
-          </div>
-        </article>
-        <article class="person">
-          <img src="assets/dhairya-portrait.jpg" alt="Portrait of Dhairya Pareek" loading="lazy">
-          <div class="card-text">
-            <h3>Dhairya Pareek</h3>
-            <p class="role">Data and AI engineer</p>
-            <p>Builds the data pipelines, forecasting and integrations underneath the AI. Technology lead for Know Your Commodity, and previously built CRM and data integrations at Choice 1 Communications.</p>
-            <div class="actions-inline"><a class="link" href="project_kyc.html">Know Your Commodity</a></div>
-          </div>
-        </article>
+    </article>
+
+    <article class="person">
+      <div class="person-pic"><img src="assets/dhairya-portrait.jpg" alt="Portrait of Dhairya Pareek" width="800" height="800"></div>
+      <div class="person-body">
+        <p class="kicker">Engineering</p>
+        <h2>Dhairya Pareek</h2>
+        <p class="person-role">Data and AI engineer</p>
+        <p>Builds the data pipelines, forecasting and integrations underneath the AI. Technology lead for Know Your Commodity, and previously built CRM and data integrations at Choice 1 Communications.</p>
+        <ul class="worked">
+          <li><b>Know Your Commodity</b> Technology lead. Live mandi price data, a 14-day predictor that reports its own uncertainty, and plain-language explanations.</li>
+          <li><b>Choice 1 Communications</b> CRM and data integrations.</li>
+        </ul>
+        <a class="person-mail" href="mailto:dhairya@hnyb.in">dhairya@hnyb.in</a>
       </div>
-    </div>
+    </article>
   </section>
 
-  <section class="band-dark" id="in-practice">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="caption">In practice</span>
-        <h2 class="h-lg">Four numbers from the work.</h2>
-      </div>
-      <dl class="numbers cols-4">
-        <div class="number"><dt>&lt;1s</dt><dd>Voice agent turn latency, p50 in production</dd></div>
-        <div class="number"><dt>14-day</dt><dd>Commodity price forecasts, live at kycagri.com</dd></div>
-        <div class="number"><dt>0.87 F1</dt><dd>Satellite detection on held-out test data</dd></div>
-        <div class="number"><dt>0</dt><dd>Hand-offs: the people who scope it build it</dd></div>
-      </dl>
+  <section class="principles">
+    <div class="sec-head">
+      <p class="kicker">Senior-led</p>
+      <h2>The people who scope a system <em>build it</em></h2>
     </div>
+    <ol class="steps">
+      <li><span class="step-n">01</span><h3>Nothing lost in hand-offs</h3><p>There is no sales team passing notes to engineers. The context from your first call goes straight into the architecture.</p></li>
+      <li><span class="step-n">02</span><h3>Requirements done properly</h3><p>The workflow, stakeholders and constraints are agreed before a line of code is written.</p></li>
+      <li><span class="step-n">03</span><h3>Named people accountable</h3><p>From model choice to deployment, the same two engineers own the decisions and answer for the result, including the parts that did not go to plan.</p></li>
+    </ol>
   </section>
 
-  <section class="section" id="track-record" style="padding-top:var(--section)">
-    <div class="wrap split">
-      <div class="split-label sticky">
-        <span class="caption">Track record</span>
-        <h2 class="h-lg">From satellite ML research to live phone calls.</h2>
-        <p>Between them, the team has moved from applied machine-learning research to systems that put AI in front of real users: live phone calls, regulated documents, customer inboxes and commodity markets.</p>
-        <a class="link" href="projects.html">Read the case studies</a>
-      </div>
-      <dl class="split-body rows">
-        <div><dt>Scanpoint Geomatics</dt><dd><p><strong>Krish Shah, ML Engineer, internal R&amp;D.</strong> Built a CNN that detects poppy cultivation in Sentinel-2 satellite imagery for a geospatial company and ISRO technology partner, reaching 0.87 F1 on held-out data.</p><p><a class="link" href="project_satellite.html">Satellite ML case study</a></p></dd></div>
-        <div><dt>Phonx AI</dt><dd><p><strong>Krish Shah, Technical Lead and Systems Architect.</strong> Real-time voice AI for US insurance enrollment: sub-second turn-taking, compliance-aware reasoning and CRM write-back. Outbound in production, inbound in pilot.</p><p><a class="link" href="project_phonx.html">Phonx AI case study</a></p></dd></div>
-        <div><dt>Knowledge graph</dt><dd><p><strong>Krish Shah, Architect and Builder.</strong> A Neo4j vector knowledge graph that enforces compliance rules at retrieval. Deployed in insurance and piloted in research.</p><p><a class="link" href="project_vkg.html">Knowledge graph case study</a></p></dd></div>
-        <div><dt>Know Your Commodity</dt><dd><p><strong>Dhairya Pareek, Technology Lead.</strong> A live agri-market intelligence platform: government mandi price data, a 14-day price predictor that reports its own uncertainty, and Llama-powered explanations.</p><p><a class="link" href="project_kyc.html">Know Your Commodity case study</a></p></dd></div>
-        <div><dt>Avara Labs</dt><dd><p><strong>Design, build and handoff.</strong> Email automation for a Shopify beauty brand: intent classification, drafted replies and human escalation for anything uncertain.</p><p><a class="link" href="project_avara.html">E-commerce case study</a></p></dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section class="section" id="senior-led">
-    <div class="wrap">
-      <article class="clay">
-        <div class="clay-body">
-          <span class="caption">Senior-led</span>
-          <h2>The people who scope a system build it.</h2>
-          <ul>
-            <li><strong>Nothing lost in hand-offs.</strong> There is no sales team passing notes to engineers. The context from your first call goes straight into the architecture.</li>
-            <li><strong>Requirements done properly.</strong> IREB-certified requirements engineering means the workflow, stakeholders and constraints are agreed before a line of code is written.</li>
-            <li><strong>Named people accountable.</strong> From model choice to deployment, the same two engineers own the decisions and answer for the result, including the parts that did not go to plan.</li>
-          </ul>
-        </div>
-        <div class="clay-photo"><img src="img/hero-ai-ops.jpg" alt="An engineer on a call at a desk, with a system diagram on the wall screen" loading="lazy"></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="cta">
-    <div class="wrap">
-      <h2 class="h-display">Send us the workflow your team still does by hand.</h2>
-      <p class="lead">Tell us what your team does by hand today. We&rsquo;ll come back with what is worth automating, what isn&rsquo;t, and what a first version would take.</p>
-      <div class="actions">
-        <a href="contact.html" class="btn btn-ink">Write to Krish and Dhairya</a>
-        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Portfolio deck (PDF, 0.5 MB)</a>
-      </div>
-    </div>
+  <section class="about-cta">
+    <h2>Send us the workflow <em>your team still does by hand</em></h2>
+    <a class="send" href="index.html#contact"><span class="cta-ico" aria-hidden="true"><svg viewBox="0 0 20 20" width="14" height="14"><path d="M3 17V3a14 14 0 0 1 14 14z" fill="currentColor"/></svg></span>Write to Krish and Dhairya</a>
   </section>
 </main>
 
-<footer class="site-foot">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <p>Production AI systems: voice agents, knowledge graphs, workflow automation, and the backend and cloud infrastructure they run on.</p>
-        <a href="contact.html" class="btn btn-ghost-light">Start a project</a>
-      </div>
-      <div class="foot-col">
-        <h2>Work</h2>
-        <a href="project_phonx.html">Phonx AI Voice Platform</a>
-        <a href="project_vkg.html">Vector Knowledge Graph</a>
-        <a href="project_kyc.html">Know Your Commodity</a>
-        <a href="project_satellite.html">Satellite ML</a>
-        <a href="project_avara.html">E-commerce Automation</a>
-      </div>
-      <div class="foot-col">
-        <h2>Firm</h2>
-        <a href="services.html">Services</a>
-        <a href="approach.html">How we work</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="foot-col">
-        <h2>Materials</h2>
-        <a href="assets/docs/krish_shah_combined_portfolio_with_logos.pdf" target="_blank" rel="noopener">Portfolio deck (PDF)</a>
-        <a href="mailto:krish0920@gmail.com">krish0920@gmail.com</a>
-      </div>
-    </div>
-    <p class="foot-mark" aria-hidden="true">Avara Labs</p>
-    <div class="foot-base">
-      <p>&copy; 2026 Avara Labs, run by Krish Shah and Dhairya Pareek</p>
-      <p>Photography from Unsplash contributors and USGS</p>
-    </div>
+<footer class="foot">
+  <div class="foot-base">
+    <span>&copy; 2026 Avara Labs, run by Krish Shah and Dhairya Pareek</span>
+    <span><a href="mailto:krish0920@gmail.com">krish0920@gmail.com</a> · <a href="mailto:dhairya@hnyb.in">dhairya@hnyb.in</a></span>
   </div>
 </footer>
-<script src="script.js"></script>
+
+<script src="menu.js"></script>
 </body>
 </html>
